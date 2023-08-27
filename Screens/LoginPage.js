@@ -40,7 +40,6 @@ const LoginPage = () => {
                 <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={gotoMainPage} />
 
                 <CustomButton buttonColor={'#ffffff47'} titleColor={'#FFF'} buttonName={createAccount} onPress={gotoSignUpPage} buttonShadow={styles.buttonShadow}  />
-                <Text>Deneme</Text>
             </View>
 
         </LinearGradient>
