@@ -1,12 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Data from '../Data.json';
 
 
 const VocablaryListPage = () => {
+
+  const lyrics = Data.lyrics;
+  
+
   return (
     <View style= {styles.container}>
-      <Text>VocablaryListPage</Text>
+     {
+      lyrics.split(' ').map((lyric) => 
       
+      {
+        const cleanedLyric = lyric.replace(/[,.!?]/g, '');
+        return(
+          <Text>{cleanedLyric}</Text>
+        )
+      }
+      )
+     } 
     </View>
   )
 }
