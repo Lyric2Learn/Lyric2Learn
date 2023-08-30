@@ -15,7 +15,7 @@ const firebaseConfig = {
     storageBucket: "lyric2learn.appspot.com",
     messagingSenderId: "285330953425",
     appId: "1:285330953425:web:fb610aba35215ddbee21f0",
-    measurementId: "G-4XLB0YY3V8"
+    measurementId: "G-4XLB0YY3V8",
 };
 
 export const FIREBASE_APP = initializeApp(firebaseConfig);

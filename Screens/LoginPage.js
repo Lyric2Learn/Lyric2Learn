@@ -3,8 +3,8 @@ import {
   Text,
   View,
   Image,
-  KeyboardAvoidingView,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
@@ -14,15 +14,25 @@ import CustomTextInput from "../Components/CustomTextInput";
 import Username from "../Images/Svg/userLogin";
 import Password from "../Images/Svg/password";
 import CustomButton from "../Components/CustomButton";
+import * as yup from "yup";
+import { signIn } from "../authentication/authService";
+import { useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
-import { FIREBASE_AUTH } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Geçerli bir e-posta girin")
+    .required("E-posta zorunlu"),
+  password: yup
+    .string()
+    .min(6, "Şifre en az 6 karakter olmalı")
+    .required("Şifre zorunlu"),
+});
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const auth = FIREBASE_AUTH;
   const navigation = useNavigation();
   const header = "Welcome Back";
   const title = "Please, Log in.";
@@ -33,23 +43,29 @@ const LoginPage = () => {
     navigation.navigate("SignUp");
   };
 
-  const signIn = async () => {
-    setLoading(true);
-    try {
-      const response = await signInWithEmailAndPassword(auth, email, password);
-      console.log(response);
-      navigation.navigate("MainPage");
-    } catch (error) {
-      console.log(error);
-      alert("Sign in failed: " + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      try {
+        setLoading(true);
+        const user = await signIn(values.email, values.password);
+        setLoading(false);
+        console.log("Giriş Başarılı: ", user.uid);
+        navigation.navigate("Tabs");
+      } catch (error) {
+        setLoading(false);
+        console.error("Hata: ", error.message);
+        Alert.alert("Hata", error.message);
+      }
+    },
+  });
 
   return (
     <LinearGradient colors={["#e5b2ca", "#cd82de"]} style={styles.linear}>
-      <KeyboardAvoidingView behavior="padding">
         <Image
           source={require("../Images/Sallyfirst.png")}
           style={styles.image}
@@ -58,18 +74,29 @@ const LoginPage = () => {
         <View style={styles.container}>
           <CustomTextInput
             icon={<Username />}
-            placeholder="Email"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-            autoCapitalise="none"
+            placeholder="E-posta"
+            onChangeText={formik.handleChange("email")}
+            onBlur={formik.handleBlur("email")}
+            value={formik.values.email}
           />
+          {formik.touched.email && formik.errors.email ? (
+            <Text style={{ marginLeft: 50, marginBottom: 5 }}>
+              *{formik.errors.email}
+            </Text>
+          ) : null}
           <CustomTextInput
             icon={<Password />}
-            placeholder="Password"
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            secureTextEntry={true}
+            placeholder="Şifre"
+            onChangeText={formik.handleChange("password")}
+            onBlur={formik.handleBlur("password")}
+            value={formik.values.password}
+            secureTextEntry
           />
+          {formik.touched.password && formik.errors.password ? (
+            <Text style={{ marginLeft: 50, marginBottom: 5 }}>
+              *{formik.errors.password}
+            </Text>
+          ) : null}
         </View>
 
         {loading ? (
@@ -81,7 +108,7 @@ const LoginPage = () => {
                 buttonColor={"#78258B"}
                 buttonName={continueName}
                 titleColor={"#FFF"}
-                onPress={signIn}
+                onPress={formik.handleSubmit}
               />
 
               <CustomButton
@@ -94,7 +121,6 @@ const LoginPage = () => {
             </View>
           </>
         )}
-      </KeyboardAvoidingView>
     </LinearGradient>
   );
 };
