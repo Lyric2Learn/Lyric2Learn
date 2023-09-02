@@ -1,28 +1,76 @@
-import { StyleSheet, Image, View, Dimensions } from 'react-native'
-import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
-
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import React, { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import Password from '../Images/Svg/password';
+import CustomTextInput from '../Components/CustomTextInput';
+import CustomButton from '../Components/CustomButton';
+import { changePassword } from '../authentication/authService'; // changePassword fonksiyonunu içe aktarın
+import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
 
 const ProfilePage = () => {
-  return (
-    <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <View style={styles.container}>
-           {/* Lyric2Learn adlı Logo  */}
-           <View style={styles.logoContainer}>
-              <Image source={require('../Images/Lyric2LearnLogo.png')} />
-            </View>
-           <View style={styles.backgroundView}>
-              
-           </View>
-      </View>
-    </LinearGradient>
-  )
-}
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [oldPassword, setOldPassword] = useState(''); // Mevcut şifreyi saklayacak state değişkeni
 
-export default ProfilePage
+  const handleChangePassword = async () => {
+    if (newPassword !== confirmNewPassword) {
+      setError('Şifreler eşleşmiyor');
+      return;
+    }
+
+    try {
+      const user = FIREBASE_AUTH.currentUser; // Mevcut kullanıcıyı alın
+      const email = user.email; // Kullanıcının e-postasını alın
+      const oldPassword = 'MevcutParola'; // Kullanıcının mevcut parolasını burada belirtin
+
+      // Şifre değiştirme işlemini çağırın
+      const message = await changePassword(email, oldPassword, newPassword);
+      setError(null); // Hata yoksa hata durumunu temizle
+      setNewPassword(''); // Yeni şifreyi temizle
+      setConfirmNewPassword(''); // Onay şifresini temizle
+      // Kullanıcıya başarılı bir şekilde şifre değiştirildiğine dair bir bildirim gösterebilirsiniz.
+      console.log(message);
+    } catch (error) {
+      console.error('Şifre değiştirme hatası:', error.message);
+      setError('Şifre değiştirme hatası');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <CustomTextInput
+        icon={<Password />}
+        placeholder='Mevcut Şifre'
+        onChangeText={(text) => setOldPassword(text)}
+        value={oldPassword}
+        secureTextEntry
+      />
+
+      <CustomTextInput
+        icon={<Password />}
+        placeholder='Yeni Şifre'
+        onChangeText={(text) => setNewPassword(text)}
+        value={newPassword}
+        secureTextEntry
+      />
+      <CustomTextInput
+        icon={<Password />}
+        placeholder='Yeni Şifre (Tekrar)'
+        onChangeText={(text) => setConfirmNewPassword(text)}
+        value={confirmNewPassword}
+        secureTextEntry
+      />
+      {error && <Text style={styles.error}>{error}</Text>}
+      <CustomButton
+        buttonColor={'#ffffff47'}
+        titleColor={'#FFF'}
+        buttonName={'Şifre Değiştir'}
+        onPress={handleChangePassword}
+        buttonShadow={styles.buttonShadow}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   linear: {
@@ -30,22 +78,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
+    alignContent: 'center',
+    backgroundColor: 'gray',
   },
-  logoContainer: {
-    alignSelf: 'center',
-    marginBottom: -50,
-    marginTop: 20,
-    marginLeft: 30,
+  error: {
+    color: 'red',
+    textAlign: 'center',
+  },
+});
 
-  },
-  backgroundView: {
-    alignSelf: 'center',
-    backgroundColor: '#ffffff99',
-    height: windowHeight / 1.6,
-    width: windowWidth / 1.1,
-    margin: 8,
-    borderRadius: 10,
-
-  },
-})
+export default ProfilePage;

@@ -29,7 +29,8 @@ const VocablaryListPage = () => {
   )
 }
 
-export default VocablaryListPage
+
+export default VocablaryListPage;
 
 const styles = StyleSheet.create({
   linear: {

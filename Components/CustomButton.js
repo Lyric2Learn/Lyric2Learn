@@ -4,17 +4,30 @@ import React from 'react'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomButton = ({buttonName, buttonColor,titleColor, buttonShadow, onPress}) => {
+const CustomButton = ({
+  buttonName,
+  buttonColor,
+  titleColor,
+  buttonShadow,
+  onPress,
+}) => {
   return (
     <TouchableOpacity
-     style={[styles.buttonContainer, {backgroundColor: buttonColor}, buttonShadow]}
-     onPress={onPress}>
-        <Text style={[styles.buttonTitle, {color: titleColor}]}>{buttonName}</Text>
-     </TouchableOpacity>
-  )
-}
+      style={[
+        styles.buttonContainer,
+        { backgroundColor: buttonColor },
+        buttonShadow,
+      ]}
+      onPress={onPress}
+    >
+      <Text style={[styles.buttonTitle, { color: titleColor }]}>
+        {buttonName}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
-export default CustomButton
+export default CustomButton;
 
 const styles = StyleSheet.create({
     buttonContainer:{

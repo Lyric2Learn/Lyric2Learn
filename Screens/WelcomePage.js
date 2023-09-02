@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions, Image, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Dimensions, Image, View } from 'react-native';
+import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomButton from '../Components/CustomButton';
 
@@ -10,7 +10,7 @@ const WelcomePage = ({ navigation }) => {
 
   const gotoLogin = () => {
     navigation.navigate('Login');
-  }
+  };
 
   return (
     <LinearGradient colors={['#E5B2CA', '#CF86DC']} style={styles.linear}>
@@ -26,10 +26,10 @@ const WelcomePage = ({ navigation }) => {
         <CustomButton buttonColor={'#ffffff47'} buttonName={letsGetStarted} titleColor={'#FFF'} buttonShadow={styles.buttonShadow} onPress={gotoLogin} />
       </View>
     </LinearGradient>
-  )
-}
+  );
+};
 
-export default WelcomePage
+export default WelcomePage;
 
 const styles = StyleSheet.create({
   linear: {
@@ -65,5 +65,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.30,
     shadowRadius: 3.84,
     elevation: 5,
-  }
-})
+  },
+});

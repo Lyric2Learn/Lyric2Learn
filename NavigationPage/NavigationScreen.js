@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainPage from '../Screens/MainPage';
-import ProfilePage from '../Screens/ProfilePage'
-import VocablaryListPage from '../Screens/VocablaryListPage'
+import ProfilePage from '../Screens/ProfilePage';
+import VocablaryListPage from '../Screens/VocablaryListPage';
 import WelcomePage from '../Screens/WelcomePage';
 import LoginPage from '../Screens/LoginPage';
 import SignUp from '../Screens/SignUp';
@@ -15,6 +15,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, Text, View } from 'react-native'
 import SongLyric from '../Screens/SongLyric';
 
+import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,16 +52,32 @@ const BottomTabNavigator = () => {
 
 // Stack Navigation Bölümü
 function NavigationScreen() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (auth) => {
+      setUser(auth);
+    });
+  }, [user]);
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Welcome'>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName='Welcome'
+      >
         <Stack.Screen name='Welcome' component={WelcomePage} />
-        <Stack.Screen name='Login' component={LoginPage} />
-        <Stack.Screen name='SignUp' component={SignUp} />
-        <Stack.Screen name="Tabs" component={BottomTabNavigator} />
-        <Stack.Screen name='SongLyric' component={SongLyric}/>
+        {!user ? (
+          <>
+            <Stack.Screen name='Login' component={LoginPage} />
+            <Stack.Screen name='SignUp' component={SignUp} />
+          </>
+        ) : (
+          <>
+          <Stack.Screen name='Tabs' component={BottomTabNavigator} />
+          <Stack.Screen name='SongLyric' component={SongLyric}/>
+          </>
+        )}
       </Stack.Navigator>
-
     </NavigationContainer>
   );
 }

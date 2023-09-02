@@ -21,7 +21,7 @@ const CustomTextInput = ({icon,value, onChangeText,placeholder, secureText,}) =>
     )
 }
 
-export default CustomTextInput
+export default CustomTextInput;
 
 const styles = StyleSheet.create({
     textinput: {

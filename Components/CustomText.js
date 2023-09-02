@@ -2,16 +2,16 @@ import { StyleSheet, Text, View,} from 'react-native'
 import React from 'react'
 
 
-const CustomText = ({header, title}) => {
+const CustomText = ({ header, title }) => {
   return (
-   <View style={styles.container}>
-    <Text style={styles.header}>{header}</Text>
-    <Text style={styles.title}>{title}</Text>
-   </View>
- );
-}
+    <View style={styles.container}>
+      <Text style={styles.header}>{header}</Text>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
+};
 
-export default CustomText
+export default CustomText;
 
 const styles = StyleSheet.create({
     container:{
