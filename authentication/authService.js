@@ -39,3 +39,20 @@ export const signOutUser = async () => {
     throw error;
   }
 };
+
+
+// Şifreyi değiştirme işlemi
+export const changePassword = async (email, oldPassword, newPassword) => {
+  try {
+    // Kullanıcının mevcut şifresi ile oturum açma işlemi
+    const userCredential = await signInWithEmailAndPassword(FIREBASE_AUTH, email, oldPassword);
+    const user = userCredential.user;
+
+    // Yeni şifre ile güncelleme işlemi
+    await updatePassword(user, newPassword);
+
+    return "Şifre başarıyla değiştirildi.";
+  } catch (error) {
+    throw error;
+  }
+};
