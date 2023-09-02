@@ -3,19 +3,20 @@ import { View, Text, StyleSheet, Modal, TouchableOpacity, } from 'react-native';
 import Unsave from '../Images/Svg/unsave'
 import Save from '../Images/Svg/save'
 
+
 const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   
-  const toggleSave = () => {
-    setIsSaved(!isSaved);
 
-    if(isSaved){
-      onSave({word, translation});
-    }else{
-      unSave({word,translation});
+  const toggleSave = () => {
+    setIsSaved(!isSaved); // isSaved değerini tersine çevir
+
+    if (isSaved) {
+      unSave({ word, translation }); 
+    } else {
+      onSave({ word, translation });
     }
-    
   }
 
   useEffect(() => {

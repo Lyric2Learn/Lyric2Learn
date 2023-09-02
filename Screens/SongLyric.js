@@ -21,6 +21,7 @@ const SongLyric = ({ route, }) => {
   const removeVocabulary = useVocabularyStore((state) => state.removeVocabulary);
 
 
+
   const handleWordClick = (selectedWord) => {
     const translation = song.translations[selectedWord];
 

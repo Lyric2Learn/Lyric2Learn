@@ -1,7 +1,6 @@
 import { StyleSheet, Dimensions, Image, View } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
-
 import CustomButton from '../Components/CustomButton';
 
 
