@@ -1,8 +1,10 @@
-import { StyleSheet, TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View, Dimensions } from 'react-native'
 import React from 'react'
-import { wp, hp } from '../Components/DimensionPixel'
 
-const CustomTextInput = ({icon,value, onChangeText,placeholder}) => {
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+const CustomTextInput = ({icon,value, onChangeText,placeholder, secureText,}) => {
   
     return (
         <View style={styles.textinput}>
@@ -13,6 +15,7 @@ const CustomTextInput = ({icon,value, onChangeText,placeholder}) => {
                 onChangeText={onChangeText}
                 style={styles.inputTextName}
                 placeholder={placeholder}
+                secureTextEntry={secureText}
             /> 
         </View>
     )
@@ -22,26 +25,29 @@ export default CustomTextInput
 
 const styles = StyleSheet.create({
     textinput: {
-      backgroundColor: '#FFF',
-      borderRadius: wp('50%'),
-      height: hp('8%'),
-      width: wp('85%'),
+      alignContent: 'center',
+      alignSelf: 'center',
       flexDirection: 'row',
-      alignItems: 'center',
+      marginHorizontal: 20,
+      marginVertical: 10,
+      backgroundColor: '#FFF',
+      borderRadius: 50,
+      height: windowHeight / 11,
+      width: windowWidth / 1.1,
+      padding: 20,
       borderColor: '#ccc',
-      marginHorizontal: ('8%'),
-      borderWidth: 0.5,
-      marginBottom: hp('3%')
-
+      borderWidth: 0.6,
     },
     inputTextName: {
-      color: '#3C3C43',
-      marginLeft: wp('4%'), 
-      fontSize: wp('3.5%'), 
-      fontWeight: '400',
       flex: 1,
+      color: '#3C3C43',
+      marginHorizontal: 10,
+      fontSize: 16,
+      fontWeight: '400',
+      
     },
     iconContainer: {
-      marginLeft: wp('5%'), 
+      alignSelf: 'center',
+      padding: 10,
     },
   });

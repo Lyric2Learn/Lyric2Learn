@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { useState } from 'react'
-import { hp, wp } from '../Components/DimensionPixel'
 import CustomText from '../Components/CustomText'
 import CustomTextInput from '../Components/CustomTextInput'
 import Username from '../Images/Svg/userLogin'
@@ -30,16 +29,17 @@ const LoginPage = () => {
 
     return (
         <LinearGradient colors={['#e5b2ca', '#cd82de']} style={styles.linear}>
-            <Image source={require('../Images/Sallyfirst.png')} style={styles.image} />
-            <CustomText header={header} title={title} />
             <View style={styles.container}>
-                <CustomTextInput icon={<Username />} placeholder={placeholder} onChangeText={setUsername} value={username} />
-                <CustomTextInput icon={<Password />} placeholder={placeholderPassword} onChangeText={setPassword} value={password} />
-            </View>
-            <View style={styles.buttonContainer}>
-                <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={gotoMainPage} />
-
-                <CustomButton buttonColor={'#ffffff47'} titleColor={'#FFF'} buttonName={createAccount} onPress={gotoSignUpPage} buttonShadow={styles.buttonShadow}  />
+                <Image source={require('../Images/Sallyfirst.png')} style={styles.image} />
+                <CustomText header={header} title={title} />
+                <View style={styles.inputcontainer}>
+                    <CustomTextInput icon={<Username />} placeholder={placeholder} onChangeText={setUsername} value={username} secureText={false}/>
+                    <CustomTextInput icon={<Password />} placeholder={placeholderPassword} onChangeText={setPassword} value={password} secureText={true} />
+                </View>
+                <View style={styles.buttonContainer}>
+                    <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={gotoMainPage} />
+                    <CustomButton buttonColor={'#ffffff47'} titleColor={'#FFF'} buttonName={createAccount} onPress={gotoSignUpPage} buttonShadow={styles.buttonShadow} />
+                </View>
             </View>
 
         </LinearGradient>
@@ -52,19 +52,24 @@ const styles = StyleSheet.create({
     linear: {
         flex: 1,
     },
-    image: {
-        margin: wp('15%'),
-        marginTop: hp('10%')
+    container:{
+        flex: 1,
+        justifyContent:'center', 
     },
-    container: {
-        marginTop: hp('3%'),
+    image: {
+        resizeMode: 'contain',
+        alignSelf: 'center', 
+    },
+    inputcontainer: {
+        marginTop: 3,
+        marginBottom: 3,
     },
     buttonShadow: {
-        marginTop: hp('3%'),
+        marginTop: 3,
         shadowColor: '##dcdcdc40',
         shadowOffset: { width: 3, height: 3 },
-        shadowOpacity: 0.30,
-        shadowRadius: 3.84,
-        elevation: 5,
-      }
+        shadowOpacity: 0.10,
+        shadowRadius: 3.0,
+        elevation: 2,
+    },
 })

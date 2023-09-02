@@ -1,0 +1,52 @@
+[ {   
+    "id": 0,
+    "songTitle": "Imagine",
+    "artist": "John Lennon",
+    "imageURL": "https://picsum.photos/200/300?grayscale",
+    "lyrics": " Imagine there's no heaven.\n It's easy if you try.\n No hell below us.\n Above us only sky.\n Imagine all the people.\n Living for today...\n Ahh...\n",
+    "translations": {
+      "Imagine": "Hayal et",
+      "heaven": "cennet",
+      "easy": "kolay",
+      "try": "denersin",
+      "hell": "cehennem ",
+      "below": "altında",
+      "only": "sadece",
+      "sky": "gökyüzü",
+      "all": "tüm",
+      "Living": "Yaşamak",
+      "today": "bugün"
+    }
+  },
+  {   
+    "id": 1,
+    "songTitle": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "imageURL": "https://picsum.photos/200/300/?blur",
+    "lyrics": " Imagine there's no heaven.\n It's easy if you try.\n No hell below us.\n Above us only sky.\n Imagine all the people.\n Living for today...\n Ahh...\n",
+    "translations": {
+      "Imagine": "Hayal et",
+      "there's": "var",
+      "no": "hiç",
+      "heaven": "cennet",
+      "It's": "Bu kolay",
+      "easy": "kolay",
+      "if": "eğer",
+      "you": "sen",
+      "try": "denersin",
+      "No": "Hiç",
+      "hell": "cehennem",
+      "below": "altında",
+      "us": "biz",
+      "Above": "Üst",
+      "only": "sadece",
+      "sky": "gökyüzü",
+      "all": "tüm",
+      "people": "insanlar",
+      "Living": "Yaşamak",
+      "for": "için",
+      "today": "bugün",
+      "Ahh": "Ahh"
+    }
+  }
+]
