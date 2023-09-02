@@ -38,21 +38,9 @@ const ProfilePage = () => {
 
   return (
     <View style={styles.container}>
-      <CustomTextInput
-        icon={<Password />}
-        placeholder='Mevcut Şifre'
-        onChangeText={(text) => setOldPassword(text)}
-        value={oldPassword}
-        secureTextEntry
-      />
+      <CustomTextInput icon={<Password />} placeholder='Mevcut Şifre' onChangeText={(text) => setOldPassword(text)} value={oldPassword} secureTextEntry />
 
-      <CustomTextInput
-        icon={<Password />}
-        placeholder='Yeni Şifre'
-        onChangeText={(text) => setNewPassword(text)}
-        value={newPassword}
-        secureTextEntry
-      />
+      <CustomTextInput icon={<Password />} placeholder='Yeni Şifre' onChangeText={(text) => setNewPassword(text)} value={newPassword} secureTextEntry />
       <CustomTextInput
         icon={<Password />}
         placeholder='Yeni Şifre (Tekrar)'
@@ -73,6 +61,9 @@ const ProfilePage = () => {
 };
 
 const styles = StyleSheet.create({
+  linear: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

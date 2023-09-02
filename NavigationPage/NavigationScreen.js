@@ -8,6 +8,13 @@ import VocablaryListPage from '../Screens/VocablaryListPage';
 import WelcomePage from '../Screens/WelcomePage';
 import LoginPage from '../Screens/LoginPage';
 import SignUp from '../Screens/SignUp';
+import Search from '../Images/Svg/search';
+import List from '../Images/Svg/list';
+import User from '../Images/Svg/user';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, View } from 'react-native';
+import SongLyric from '../Screens/SongLyric';
+
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -17,11 +24,41 @@ const Tab = createBottomTabNavigator();
 // BottomTabNavigtion Bölümü
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name='Anasayfa' component={MainPage} />
-      <Tab.Screen name='Liste' component={VocablaryListPage} />
-      <Tab.Screen name='Profil' component={ProfilePage} />
-    </Tab.Navigator>
+    <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: '#FFFFFF',
+            padding: 5,
+            borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
+          },
+        }}
+      >
+        <Tab.Screen
+          name='Anasayfa'
+          component={MainPage}
+          options={{
+            tabBarIcon: ({ color, size }) => <Search width={size} height={size} fill={color} />,
+          }}
+        />
+        <Tab.Screen
+          name='Liste'
+          component={VocablaryListPage}
+          options={{
+            tabBarIcon: ({ color, size }) => <List width={size} height={size} fill={color} />,
+          }}
+        />
+        <Tab.Screen
+          name='Profil'
+          component={ProfilePage}
+          options={{
+            tabBarIcon: ({ color, size }) => <User width={size} height={size} fill={color} />,
+          }}
+        />
+      </Tab.Navigator>
+    </LinearGradient>
   );
 };
 
@@ -36,10 +73,7 @@ function NavigationScreen() {
   }, [user]);
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName='Welcome'
-      >
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Welcome'>
         <Stack.Screen name='Welcome' component={WelcomePage} />
         {!user ? (
           <>
@@ -47,7 +81,10 @@ function NavigationScreen() {
             <Stack.Screen name='SignUp' component={SignUp} />
           </>
         ) : (
-          <Stack.Screen name='Tabs' component={BottomTabNavigator} />
+          <>
+            <Stack.Screen name='Tabs' component={BottomTabNavigator} />
+            <Stack.Screen name='SongLyric' component={SongLyric} />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
@@ -55,3 +92,9 @@ function NavigationScreen() {
 }
 
 export default NavigationScreen;
+
+const styles = StyleSheet.create({
+  linear: {
+    flex: 1,
+  },
+});

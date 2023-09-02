@@ -1,26 +1,13 @@
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native';
 import React from 'react';
-import { hp, wp } from './DimensionPixel';
 
-const CustomButton = ({
-  buttonName,
-  buttonColor,
-  titleColor,
-  buttonShadow,
-  onPress,
-}) => {
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+const CustomButton = ({ buttonName, buttonColor, titleColor, buttonShadow, onPress }) => {
   return (
-    <TouchableOpacity
-      style={[
-        styles.buttonContainer,
-        { backgroundColor: buttonColor },
-        buttonShadow,
-      ]}
-      onPress={onPress}
-    >
-      <Text style={[styles.buttonTitle, { color: titleColor }]}>
-        {buttonName}
-      </Text>
+    <TouchableOpacity style={[styles.buttonContainer, { backgroundColor: buttonColor }, buttonShadow]} onPress={onPress}>
+      <Text style={[styles.buttonTitle, { color: titleColor }]}>{buttonName}</Text>
     </TouchableOpacity>
   );
 };
@@ -29,13 +16,15 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: wp('80%'),
-    height: hp('8%'),
-    borderRadius: wp('30%'),
-    marginLeft: wp('10%'),
-    marginRight: hp('-10%'),
+    alignSelf: 'center',
     justifyContent: 'center',
     alignContent: 'center',
+    marginHorizontal: 40,
+    marginVertical: 10,
+    padding: 10,
+    height: windowHeight / 11,
+    width: windowWidth / 1.2,
+    borderRadius: 50,
   },
   buttonTitle: {
     fontSize: 20,

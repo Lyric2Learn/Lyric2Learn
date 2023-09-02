@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { wp, hp } from './DimensionPixel';
 
 const CustomText = ({ header, title }) => {
   return (
@@ -15,7 +14,10 @@ export default CustomText;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: hp('-8%'),
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginVertical: 10,
+    marginTop: -40,
   },
   header: {
     color: '#FFFFFFBF',
