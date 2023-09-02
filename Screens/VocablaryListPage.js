@@ -1,22 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import Data from '../Data.json';
 
 const VocablaryListPage = () => {
-  return (
-    <View style= {styles.container}>
-      <Text>VocablaryListPage</Text>
-      
-    </View>
-  )
-}
+  const lyrics = Data.lyrics;
 
-export default VocablaryListPage
+  return (
+    <View style={styles.container}>
+      {lyrics.split(' ').map((lyric) => {
+        const cleanedLyric = lyric.replace(/[,.!?]/g, '');
+        return <Text>{cleanedLyric}</Text>;
+      })}
+    </View>
+  );
+};
+
+export default VocablaryListPage;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignContent: 'center'
-  }
-})
+    alignContent: 'center',
+  },
+});
