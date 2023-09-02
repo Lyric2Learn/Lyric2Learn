@@ -1,19 +1,19 @@
-import { StyleSheet, TextInput, View, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, View, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomTextInput = ({ icon, value, onChangeText, placeholder, secureText }) => {
+const CustomSearchInput = ({ icon, value, onChangeText, placeholder }) => {
   return (
     <View style={styles.textinput}>
       {icon && <View style={styles.iconContainer}>{icon}</View>}
-      <TextInput value={value} onChangeText={onChangeText} style={styles.inputTextName} placeholder={placeholder} secureTextEntry={secureText} />
+      <TextInput value={value} onChangeText={onChangeText} style={styles.inputTextName} placeholder={placeholder} />
     </View>
   );
 };
 
-export default CustomTextInput;
+export default CustomSearchInput;
 
 const styles = StyleSheet.create({
   textinput: {
