@@ -4,13 +4,7 @@ import React from 'react';
 // Main Sayfasındaki, BottomTabBar iconu
 const main = () => {
   return (
-    <Svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='50'
-      height='50'
-      viewBox='0 0 50 50'
-      fill='none'
-    >
+    <Svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50' fill='none'>
       <Path
         fill-rule='evenodd'
         clip-rule='evenodd'

@@ -1,15 +1,13 @@
-import { StyleSheet, Text, View, Image, Dimensions, ScrollView } from 'react-native'
-import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
-import useVocabularyStore from '../Store/useStore'
-
+import { StyleSheet, Text, View, Image, Dimensions, ScrollView } from 'react-native';
+import React from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
+import useVocabularyStore from '../Store/useStore';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const VocablaryListPage = () => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);
-
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
@@ -20,15 +18,16 @@ const VocablaryListPage = () => {
         <View style={styles.backgroundView}>
           <ScrollView>
             {vocabulary.map((item, index) => (
-                <Text key={index} style={styles.word}>{item.word} : {item.translation}</Text>
+              <Text key={index} style={styles.word}>
+                {item.word} : {item.translation}
+              </Text>
             ))}
           </ScrollView>
         </View>
       </View>
     </LinearGradient>
-  )
-}
-
+  );
+};
 
 export default VocablaryListPage;
 
@@ -38,8 +37,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'space-evenly'
-
+    justifyContent: 'space-evenly',
   },
   logoContainer: {
     alignSelf: 'center',
@@ -54,21 +52,19 @@ const styles = StyleSheet.create({
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
-
   },
-  word:{
+  word: {
     alignSelf: 'center',
     textAlign: 'left',
-    height: windowHeight / 16 ,
+    height: windowHeight / 16,
     width: windowWidth / 1.2,
-    margin: 10, 
+    margin: 10,
     padding: 15,
     borderRadius: 20,
     backgroundColor: 'white',
     fontSize: 20,
     fontWeight: '500',
     letterSpacing: 0.7,
-    color: '#E5B2CA'
-     
-  }
-})
+    color: '#E5B2CA',
+  },
+});

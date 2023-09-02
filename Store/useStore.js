@@ -1,12 +1,12 @@
 import { TouchableOpacity } from 'react-native';
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 const useVocabularyStore = create((set) => ({
   vocabulary: [],
-  addVocabulary: (word) => set((state) => ({
-    vocabulary: [...state.vocabulary, word,],
-  })),
-}))
+  addVocabulary: (word) =>
+    set((state) => ({
+      vocabulary: [...state.vocabulary, word],
+    })),
+}));
 
-
-export default useVocabularyStore
+export default useVocabularyStore;

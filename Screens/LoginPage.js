@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ActivityIndicator,
-  Alert,
-} from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import CustomText from '../Components/CustomText';
@@ -19,14 +12,8 @@ import { useFormik } from 'formik';
 import { useNavigation } from '@react-navigation/native';
 
 const validationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Geçerli bir e-posta girin')
-    .required('E-posta zorunlu'),
-  password: yup
-    .string()
-    .min(6, 'Şifre en az 6 karakter olmalı')
-    .required('Şifre zorunlu'),
+  email: yup.string().email('Geçerli bir e-posta girin').required('E-posta zorunlu'),
+  password: yup.string().min(6, 'Şifre en az 6 karakter olmalı').required('Şifre zorunlu'),
 });
 
 const LoginPage = () => {
@@ -64,10 +51,7 @@ const LoginPage = () => {
 
   return (
     <LinearGradient colors={['#e5b2ca', '#cd82de']} style={styles.linear}>
-      <Image
-        source={require('../Images/Sallyfirst.png')}
-        style={styles.image}
-      />
+      <Image source={require('../Images/Sallyfirst.png')} style={styles.image} />
       <CustomText header={header} title={title} />
       <View style={styles.container}>
         <CustomTextInput
@@ -77,11 +61,7 @@ const LoginPage = () => {
           onBlur={formik.handleBlur('email')}
           value={formik.values.email}
         />
-        {formik.touched.email && formik.errors.email ? (
-          <Text style={{ marginLeft: 50, marginBottom: 5 }}>
-            *{formik.errors.email}
-          </Text>
-        ) : null}
+        {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
         <CustomTextInput
           icon={<Password />}
           placeholder='Şifre'
@@ -90,11 +70,7 @@ const LoginPage = () => {
           value={formik.values.password}
           secureTextEntry
         />
-        {formik.touched.password && formik.errors.password ? (
-          <Text style={{ marginLeft: 50, marginBottom: 5 }}>
-            *{formik.errors.password}
-          </Text>
-        ) : null}
+        {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
       </View>
 
       {loading ? (
@@ -102,12 +78,7 @@ const LoginPage = () => {
       ) : (
         <>
           <View style={styles.buttonContainer}>
-            <CustomButton
-              buttonColor={'#78258B'}
-              buttonName={continueName}
-              titleColor={'#FFF'}
-              onPress={formik.handleSubmit}
-            />
+            <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={formik.handleSubmit} />
 
             <CustomButton
               buttonColor={'#ffffff47'}
@@ -126,27 +97,27 @@ const LoginPage = () => {
 export default LoginPage;
 
 const styles = StyleSheet.create({
-    linear: {
-        flex: 1,
-    },
-    container:{
-        flex: 1,
-        justifyContent:'center', 
-    },
-    image: {
-        resizeMode: 'contain',
-        alignSelf: 'center', 
-    },
-    inputcontainer: {
-        marginTop: 3,
-        marginBottom: 3,
-    },
-    buttonShadow: {
-        marginTop: 3,
-        shadowColor: '##dcdcdc40',
-        shadowOffset: { width: 3, height: 3 },
-        shadowOpacity: 0.10,
-        shadowRadius: 3.0,
-        elevation: 2,
-    },
-})
+  linear: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  image: {
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+  inputcontainer: {
+    marginTop: 3,
+    marginBottom: 3,
+  },
+  buttonShadow: {
+    marginTop: 3,
+    shadowColor: '##dcdcdc40',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.0,
+    elevation: 2,
+  },
+});

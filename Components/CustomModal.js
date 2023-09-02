@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, } from 'react-native';
-import Unsave from '../Images/Svg/unsave'
-import Save from '../Images/Svg/save'
+import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
+import Unsave from '../Images/Svg/unsave';
+import Save from '../Images/Svg/save';
 
-
-const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave}) => {
+const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  
 
   const toggleSave = () => {
     setIsSaved(!isSaved); // isSaved değerini tersine çevir
 
     if (isSaved) {
-      unSave({ word, translation }); 
+      unSave({ word, translation });
     } else {
       onSave({ word, translation });
     }
-  }
+  };
 
   useEffect(() => {
     setModalVisible(visible);
@@ -25,7 +23,7 @@ const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave})
 
   return (
     <Modal
-      animationType="slide"
+      animationType='slide'
       transparent={true}
       visible={modalVisible}
       onRequestClose={() => {
@@ -35,15 +33,13 @@ const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave})
     >
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-           <View style={styles.saveContainer}>
+          <View style={styles.saveContainer}>
             <View style={styles.textContainer}>
-            <Text style={styles.selectedWord}>{word}</Text>
-            <Text style={styles.translationText}>{translation}</Text>
+              <Text style={styles.selectedWord}>{word}</Text>
+              <Text style={styles.translationText}>{translation}</Text>
             </View>
-            <TouchableOpacity onPress={toggleSave}>
-                {isSaved ? <Save/> : <Unsave/>}
-            </TouchableOpacity>
-           </View>
+            <TouchableOpacity onPress={toggleSave}>{isSaved ? <Save /> : <Unsave />}</TouchableOpacity>
+          </View>
           <TouchableOpacity onPress={() => onClose()} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>
           </TouchableOpacity>
@@ -64,10 +60,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: '7%', 
+    padding: '7%',
     width: '100%',
-    minHeight: '30%', 
-    justifyContent: 'flex-start'
+    minHeight: '30%',
+    justifyContent: 'flex-start',
   },
   translationText: {
     fontSize: 18,
@@ -84,17 +80,17 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   selectedWord: {
-    fontSize: 20, 
-    fontWeight: 'bold', 
+    fontSize: 20,
+    fontWeight: 'bold',
     marginBottom: 10,
   },
-  textContainer:{
-    margin: '5%'
+  textContainer: {
+    margin: '5%',
   },
   saveContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 });
 
 export default CustomHalfModal;

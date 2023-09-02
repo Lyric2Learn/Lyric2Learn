@@ -1,4 +1,5 @@
-[ {   
+[
+  {
     "id": 0,
     "songTitle": "Imagine",
     "artist": "John Lennon",
@@ -18,7 +19,7 @@
       "today": "bugün"
     }
   },
-  {   
+  {
     "id": 1,
     "songTitle": "Smells Like Teen Spirit",
     "artist": "Nirvana",

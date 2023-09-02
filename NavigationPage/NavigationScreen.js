@@ -12,7 +12,7 @@ import Search from '../Images/Svg/search';
 import List from '../Images/Svg/list';
 import User from '../Images/Svg/user';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native';
 import SongLyric from '../Screens/SongLyric';
 
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
@@ -25,26 +25,38 @@ const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <Tab.Navigator screenOptions={{
-        headerShown: false, tabBarStyle: {
-          backgroundColor: '#FFFFFF',
-          padding: 5,
-          borderTopLeftRadius: 30,
-          borderTopRightRadius: 30,
-        
-        }
-      }}>
-        <Tab.Screen name="Anasayfa" component={MainPage} options={{
-          tabBarIcon: ({ color, size }) => <Search width={size} height={size} fill={color} />,
-        }} />
-        <Tab.Screen name="Liste" component={VocablaryListPage}
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: '#FFFFFF',
+            padding: 5,
+            borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
+          },
+        }}
+      >
+        <Tab.Screen
+          name='Anasayfa'
+          component={MainPage}
+          options={{
+            tabBarIcon: ({ color, size }) => <Search width={size} height={size} fill={color} />,
+          }}
+        />
+        <Tab.Screen
+          name='Liste'
+          component={VocablaryListPage}
           options={{
             tabBarIcon: ({ color, size }) => <List width={size} height={size} fill={color} />,
-          }} />
-        <Tab.Screen name="Profil" component={ProfilePage}
+          }}
+        />
+        <Tab.Screen
+          name='Profil'
+          component={ProfilePage}
           options={{
-            tabBarIcon: ({ color, size }) => <User width={size} height={size} fill={color} />, 
-          }} />
+            tabBarIcon: ({ color, size }) => <User width={size} height={size} fill={color} />,
+          }}
+        />
       </Tab.Navigator>
     </LinearGradient>
   );
@@ -61,10 +73,7 @@ function NavigationScreen() {
   }, [user]);
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName='Welcome'
-      >
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Welcome'>
         <Stack.Screen name='Welcome' component={WelcomePage} />
         {!user ? (
           <>
@@ -73,8 +82,8 @@ function NavigationScreen() {
           </>
         ) : (
           <>
-          <Stack.Screen name='Tabs' component={BottomTabNavigator} />
-          <Stack.Screen name='SongLyric' component={SongLyric}/>
+            <Stack.Screen name='Tabs' component={BottomTabNavigator} />
+            <Stack.Screen name='SongLyric' component={SongLyric} />
           </>
         )}
       </Stack.Navigator>
@@ -82,11 +91,10 @@ function NavigationScreen() {
   );
 }
 
-
 export default NavigationScreen;
 
 const styles = StyleSheet.create({
   linear: {
     flex: 1,
-  }
-})
+  },
+});

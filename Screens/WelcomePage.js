@@ -3,10 +3,8 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomButton from '../Components/CustomButton';
 
-
-
 const WelcomePage = ({ navigation }) => {
-  const letsGetStarted = 'Hadi Başlayalım...'
+  const letsGetStarted = 'Hadi Başlayalım...';
 
   const gotoLogin = () => {
     navigation.navigate('Login');
@@ -40,15 +38,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   logoContainer: {
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   imageContainer: {
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   note: {
     resizeMode: 'contain',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   splashSally: {
     flexBasis: '35%',
@@ -58,11 +56,11 @@ const styles = StyleSheet.create({
   },
   drop: {
     marginTop: -30,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   buttonShadow: {
     shadowColor: '##dcdcdc40',
-    shadowOpacity: 0.30,
+    shadowOpacity: 0.3,
     shadowRadius: 3.84,
     elevation: 5,
   },

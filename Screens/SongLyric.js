@@ -4,13 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Back from '../Images/Svg/back';
 import { useNavigation } from '@react-navigation/native';
 import CustomModal from '../Components/CustomModal';
-import useVocabularyStore from '../Store/useStore'
+import useVocabularyStore from '../Store/useStore';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-
-const SongLyric = ({ route, }) => {
+const SongLyric = ({ route }) => {
   const navigation = useNavigation();
   const { song } = route.params;
   const [selectedWord, setSelectedWord] = useState('');
@@ -19,8 +18,6 @@ const SongLyric = ({ route, }) => {
 
   const addVocabulary = useVocabularyStore((state) => state.addVocabulary);
   const removeVocabulary = useVocabularyStore((state) => state.removeVocabulary);
-
-
 
   const handleWordClick = (selectedWord) => {
     const translation = song.translations[selectedWord];
@@ -58,25 +55,32 @@ const SongLyric = ({ route, }) => {
             </View>
           </View>
           <ScrollView>
-          <Text style={styles.lyrics}>
-            {song.lyrics.split(' ').map((word, index) => {
-              return (
-                <Text key={index}>
-                  {Object.keys(song.translations).includes(word) ? (
-                    <Text onPress={() => handleWordClick(word)} style={styles.clickableWord}>
-                      {word + ' '} 
-                    </Text>
-                  ) : (
-                    <Text>{word} </Text>
-                  )}
-                </Text>
-              );
-            })}
-          </Text>
+            <Text style={styles.lyrics}>
+              {song.lyrics.split(' ').map((word, index) => {
+                return (
+                  <Text key={index}>
+                    {Object.keys(song.translations).includes(word) ? (
+                      <Text onPress={() => handleWordClick(word)} style={styles.clickableWord}>
+                        {word + ' '}
+                      </Text>
+                    ) : (
+                      <Text>{word} </Text>
+                    )}
+                  </Text>
+                );
+              })}
+            </Text>
           </ScrollView>
         </View>
       </View>
-      <CustomModal visible={visible} onClose={closeModal} translation={translation.charAt(0).toUpperCase() + translation.slice(1)}  word={selectedWord.charAt(0).toUpperCase() + selectedWord.slice(1)} onSave={addVocabulary} unSave={removeVocabulary}/>
+      <CustomModal
+        visible={visible}
+        onClose={closeModal}
+        translation={translation.charAt(0).toUpperCase() + translation.slice(1)}
+        word={selectedWord.charAt(0).toUpperCase() + selectedWord.slice(1)}
+        onSave={addVocabulary}
+        unSave={removeVocabulary}
+      />
     </LinearGradient>
   );
 };
@@ -90,7 +94,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-
   },
   header: {
     flexDirection: 'row',
@@ -98,7 +101,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 40,
-
   },
   logoContainer: {
     alignSelf: 'center',
@@ -113,19 +115,16 @@ const styles = StyleSheet.create({
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
-
   },
   coverContainer: {
     flexDirection: 'row',
     padding: 20,
-
   },
   textContainer: {
     flexDirection: 'column',
     flex: 1,
     marginHorizontal: 20,
     marginVertical: 10,
-
   },
   songImage: {
     width: windowWidth / 4,
@@ -148,13 +147,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     lineHeight: 20,
-    letterSpacing: 0.7
+    letterSpacing: 0.7,
   },
   clickableWord: {
     color: '#E5B2CA',
     fontWeight: 'bold',
     padding: 10,
-    fontSize:18,
+    fontSize: 18,
     letterSpacing: 0.7,
     lineHeight: 20,
   },

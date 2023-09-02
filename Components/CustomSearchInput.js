@@ -1,25 +1,19 @@
-import { StyleSheet, Dimensions, View, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { StyleSheet, Dimensions, View, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomSearchInput = ({ icon, value, onChangeText, placeholder,}) => {
+const CustomSearchInput = ({ icon, value, onChangeText, placeholder }) => {
   return (
     <View style={styles.textinput}>
-      {icon &&
-        <View style={styles.iconContainer}>{icon}</View>}
-        <TextInput
-          value={value}
-          onChangeText={onChangeText}
-          style={styles.inputTextName}
-          placeholder={placeholder}
-        />
+      {icon && <View style={styles.iconContainer}>{icon}</View>}
+      <TextInput value={value} onChangeText={onChangeText} style={styles.inputTextName} placeholder={placeholder} />
     </View>
-  )
-}
+  );
+};
 
-export default CustomSearchInput
+export default CustomSearchInput;
 
 const styles = StyleSheet.create({
   textinput: {
@@ -42,10 +36,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     fontSize: 16,
     fontWeight: '400',
-
   },
   iconContainer: {
     alignSelf: 'center',
     padding: 10,
   },
-})
+});

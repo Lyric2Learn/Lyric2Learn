@@ -1,12 +1,11 @@
-import { StyleSheet, Image, View, Dimensions, FlatList, Text, TouchableOpacity} from 'react-native'
-import React, { useState } from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
-import Search from '../Images/Svg/search'
-import CustomSearchInput from '../Components/CustomSearchInput'
-import music_data from '../musicdata.json'
-import CustomSearchSong from '../Components/CustomSearchSong'
+import { StyleSheet, Image, View, Dimensions, FlatList, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
+import Search from '../Images/Svg/search';
+import CustomSearchInput from '../Components/CustomSearchInput';
+import music_data from '../musicdata.json';
+import CustomSearchSong from '../Components/CustomSearchSong';
 import { useNavigation } from '@react-navigation/native';
-
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -21,14 +20,14 @@ const MainPage = () => {
     setSearchText(text);
     const isTextEmpty = text === '' || text === undefined;
     setVisible(isTextEmpty || filteredList.length === 0 || !text);
-  }
+  };
 
-  const filteredList = music_data.filter(song => {
+  const filteredList = music_data.filter((song) => {
     const searchedText = searchText.toLowerCase();
     const currentTitle = song.artist.toLowerCase();
     const currentSongTitle = song.songTitle.toLowerCase();
 
-    return currentTitle.includes(searchedText) || currentSongTitle.includes(searchedText) 
+    return currentTitle.includes(searchedText) || currentSongTitle.includes(searchedText);
   });
 
   return (
@@ -40,38 +39,34 @@ const MainPage = () => {
         </View>
         {/* Search Alanı */}
         <View style={styles.inputContainer}>
-          <CustomSearchInput icon={<Search />}
-            value={searchText}
-            onChangeText={handleSearch}
-            placeholder={'Şarkınızı Arayın...'}
-          />
+          <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
         </View>
         {/* Şarkı araması yapılmadan önce gözükecek resim */}
         <View style={styles.backgroundView}>
-          {isVisible ?
-            (<Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />) : <FlatList
+          {isVisible ? (
+            <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
+          ) : (
+            <FlatList
               data={filteredList}
               keyExtractor={(item) => item.id}
-              renderItem={({item}) => 
+              renderItem={({ item }) => (
                 <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
-                  <CustomSearchSong song={item}/>
+                  <CustomSearchSong song={item} />
                 </TouchableOpacity>
-              }
+              )}
             />
-          }
+          )}
         </View>
       </View>
-
     </LinearGradient>
-  )
-}
+  );
+};
 
 export default MainPage;
 
 const styles = StyleSheet.create({
   linear: {
     flex: 1,
-
   },
   container: {
     flex: 1,
@@ -81,11 +76,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: -50,
     marginTop: 20,
-
   },
   inputContainer: {
     flexShrink: 0,
-    flexBasis: '10%'
+    flexBasis: '10%',
   },
   backgroundView: {
     alignSelf: 'center',
@@ -94,16 +88,15 @@ const styles = StyleSheet.create({
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
-
   },
   backgroundImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    flexBasis: '80%'
+    flexBasis: '80%',
   },
   songCard: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
-})
+});

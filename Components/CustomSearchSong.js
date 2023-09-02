@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
-import React from 'react'
-
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import React from 'react';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -14,14 +13,14 @@ const CustomSearchSong = ({ song }) => {
         <Text style={styles.textStyleTitle}>{song.songTitle}</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default CustomSearchSong
+export default CustomSearchSong;
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     flexDirection: 'row',
     backgroundColor: '#FFF',
     marginLeft: 10,
@@ -33,32 +32,29 @@ const styles = StyleSheet.create({
     height: windowHeight / 10,
     alignSelf: 'center',
     padding: 10,
-
   },
   songImage: {
     width: windowWidth / 6,
     height: windowHeight / 14,
     borderRadius: 10,
-
   },
   textContainer: {
     flexDirection: 'column',
     flex: 1,
     marginHorizontal: 20,
     marginVertical: 10,
-  
   },
   textStyleArtist: {
     color: '#E5B2CA',
     fontSize: 18,
     fontWeight: '700',
-    letterSpacing: 0.70,
+    letterSpacing: 0.7,
     marginBottom: 5,
   },
   textStyleTitle: {
     color: '#E5B2CA',
     fontSize: 15,
     fontWeight: '400',
-    letterSpacing: 0.70,
-  }
-})
+    letterSpacing: 0.7,
+  },
+});

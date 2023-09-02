@@ -4,13 +4,7 @@ import React from 'react';
 // Main sayfasındaki textinput içindeki arama iconu
 const search = () => {
   return (
-    <Svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='29'
-      height='29'
-      viewBox='0 0 29 29'
-      fill='none'
-    >
+    <Svg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29' fill='none'>
       <Path
         fillRule='evenodd'
         clipRule='evenodd'
