@@ -7,7 +7,7 @@ const WelcomePage = ({ navigation }) => {
   const letsGetStarted = 'Hadi Başlayalım...';
 
   const gotoLogin = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Tabs');
   };
 
   return (
