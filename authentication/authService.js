@@ -36,9 +36,10 @@ export const getCurrentUser = () => {
 };
 
 // Oturumu kapatma işlemi
-export const signOutUser = async () => {
+export const signOutUser = async (navigation) => {
   try {
-    await signOut(auth);
+    await signOut(FIREBASE_AUTH);
+    navigation.navigate('Welcome');
   } catch (error) {
     throw error;
   }
