@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
-import { updatePassword, signOutUser } from '../authentication/authService';
+import { changePassword, signOutUser } from '../authentication/authService';
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [error, setError] = useState(null);
-  const [oldPassword, setOldPassword] = useState(''); // Burada oldPassword'ı useState ile başlatın
+  const [oldPassword, setOldPassword] = useState('');
   const navigation = useNavigation();
 
   const handleLogout = async () => {
@@ -28,19 +28,8 @@ const ProfilePage = () => {
 
   const handleChangePassword = async () => {
     try {
-      const user = FIREBASE_AUTH.currentUser;
-      const email = user.email;
-
-      // Mevcut şifreyi doğrulama işlemi
-      try {
-        await reauthenticateWithCredential(user, FIREBASE_AUTH.EmailAuthProvider.credential(email, oldPassword));
-      } catch (reauthError) {
-        setError('Mevcut şifre yanlış');
-        return;
-      }
-
-      // Şifre değiştirme işlemi
-      await updatePassword(user, newPassword);
+      // Şifre değiştirme işlemini çağırın
+      await changePassword(FIREBASE_AUTH.currentUser.email, oldPassword, newPassword);
 
       setError(null);
       setOldPassword('');
