@@ -3,10 +3,9 @@ import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
-import { changePassword } from '../authentication/authService';
+import { updatePassword, signOutUser } from '../authentication/authService';
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
 import { LinearGradient } from 'expo-linear-gradient';
-import { signOutUser } from '../authentication/authService';
 import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -16,38 +15,42 @@ const ProfilePage = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [error, setError] = useState(null);
-  const [oldPassword, setOldPassword] = useState(''); // Mevcut şifreyi saklayacak state değişkeni
+  const [oldPassword, setOldPassword] = useState(''); // Burada oldPassword'ı useState ile başlatın
   const navigation = useNavigation();
-
-  const handleChangePassword = async () => {
-    if (newPassword !== confirmNewPassword) {
-      setError('Şifreler eşleşmiyor');
-      return;
-    }
-
-    try {
-      const user = FIREBASE_AUTH.currentUser; // Mevcut kullanıcıyı alın
-      const email = user.email; // Kullanıcının e-postasını alın
-      const oldPassword = 'MevcutParola'; // Kullanıcının mevcut parolasını burada belirtin
-
-      // Şifre değiştirme işlemini çağırın
-      const message = await changePassword(email, oldPassword, newPassword);
-      setError(null); // Hata yoksa hata durumunu temizle
-      setNewPassword(''); // Yeni şifreyi temizle
-      setConfirmNewPassword(''); // Onay şifresini temizle
-      // Kullanıcıya başarılı bir şekilde şifre değiştirildiğine dair bir bildirim gösterebilirsiniz.
-      console.log(message);
-    } catch (error) {
-      console.error('Şifre değiştirme hatası:', error.message);
-      setError('Şifre değiştirme hatası');
-    }
-  };
 
   const handleLogout = async () => {
     try {
-      await signOutUser(navigation); // navigation nesnesini fonksiyona iletiyoruz
+      await signOutUser(navigation);
     } catch (error) {
       console.error('Çıkış yapma hatası:', error.message);
+    }
+  };
+
+  const handleChangePassword = async () => {
+    try {
+      const user = FIREBASE_AUTH.currentUser;
+      const email = user.email;
+
+      // Mevcut şifreyi doğrulama işlemi
+      try {
+        await reauthenticateWithCredential(user, FIREBASE_AUTH.EmailAuthProvider.credential(email, oldPassword));
+      } catch (reauthError) {
+        setError('Mevcut şifre yanlış');
+        return;
+      }
+
+      // Şifre değiştirme işlemi
+      await updatePassword(user, newPassword);
+
+      setError(null);
+      setOldPassword('');
+      setNewPassword('');
+      setConfirmNewPassword('');
+
+      console.log('Şifre başarıyla değiştirildi.');
+    } catch (error) {
+      console.error('Şifre değiştirme hatası:', error.message);
+      setError('Şifre değiştirme hatası');
     }
   };
 
