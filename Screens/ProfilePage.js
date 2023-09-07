@@ -28,6 +28,10 @@ const ProfilePage = () => {
 
   const handleChangePassword = async () => {
     try {
+      if (newPassword !== confirmNewPassword) {
+        setError('Şifreler uyuşmuyor');
+        return;
+      }
       // Şifre değiştirme işlemini çağırın
       await changePassword(FIREBASE_AUTH.currentUser.email, oldPassword, newPassword);
 
@@ -49,15 +53,30 @@ const ProfilePage = () => {
         <Image source={require('../Images/Lyric2LearnLogo.png')} />
       </View>
       <View style={styles.container}>
-        <CustomTextInput icon={<Password />} placeholder='Mevcut Şifre' onChangeText={(text) => setOldPassword(text)} value={oldPassword} secureTextEntry />
+        <CustomTextInput
+          icon={<Password />}
+          placeholder='Mevcut Şifre'
+          onChangeText={(text) => setOldPassword(text)}
+          value={oldPassword}
+          secureText={true}
+          isLowerCase={false}
+        />
 
-        <CustomTextInput icon={<Password />} placeholder='Yeni Şifre' onChangeText={(text) => setNewPassword(text)} value={newPassword} secureTextEntry />
+        <CustomTextInput
+          icon={<Password />}
+          placeholder='Yeni Şifre'
+          onChangeText={(text) => setNewPassword(text)}
+          value={newPassword}
+          secureText={true}
+          isLowerCase={false}
+        />
         <CustomTextInput
           icon={<Password />}
           placeholder='Yeni Şifre (Tekrar)'
           onChangeText={(text) => setConfirmNewPassword(text)}
           value={confirmNewPassword}
-          secureTextEntry
+          secureText={true}
+          isLowerCase={false}
         />
         {error && <Text style={styles.error}>{error}</Text>}
         <CustomButton

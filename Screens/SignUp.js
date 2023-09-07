@@ -63,6 +63,8 @@ const SignUp = () => {
           onChangeText={formik.handleChange('email')}
           onBlur={formik.handleBlur('email')}
           value={formik.values.email}
+          secureText={false}
+          isLowerCase={true}
         />
         {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
         <CustomTextInput
@@ -71,7 +73,8 @@ const SignUp = () => {
           onChangeText={formik.handleChange('password')}
           onBlur={formik.handleBlur('password')}
           value={formik.values.password}
-          secureTextEntry
+          secureText={true}
+          isLowerCase={false}
         />
         {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
       </View>
