@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
 
 
@@ -36,11 +36,11 @@ export const getCurrentUser = () => {
     );
   });
 };
-
 // Oturumu kapatma işlemi
-export const signOutUser = async () => {
+export const signOutUser = async (navigation) => {
   try {
-    await signOut(auth);
+    await signOut(FIREBASE_AUTH);
+    navigation.navigate('Welcome');
   } catch (error) {
     throw error;
   }
@@ -56,8 +56,9 @@ export const changePassword = async (email, oldPassword, newPassword) => {
     // Yeni şifre ile güncelleme işlemi
     await updatePassword(user, newPassword);
 
-    return 'Şifre başarıyla değiştirildi.';
+    console.log('Şifre başarıyla değiştirildi.');
   } catch (error) {
+    console.error('Şifre değiştirme hatası:', error.message);
     throw error;
   }
 };

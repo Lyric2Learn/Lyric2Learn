@@ -1,14 +1,28 @@
 import { StyleSheet, TextInput, View, Dimensions } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomTextInput = ({ icon, value, onChangeText, placeholder, secureText }) => {
+const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, isLowerCase }) => {
+  const [text, setText] = useState(value);
+
+  const handleTextInput = (inputText) => {
+    // Girilen metindeki boşlukları kaldırın
+    const sanitizedText = inputText.replace(/\s/g, '');
+    setText(sanitizedText);
+    onChangeText(sanitizedText);
+
+    // isLowerCase prop'u true ise, girilen metni küçük harfe çevir
+    const finalText = isLowerCase ? inputText.toLowerCase() : inputText;
+    setText(finalText);
+    onChangeText(finalText);
+  };
+
   return (
     <View style={styles.textinput}>
       {icon && <View style={styles.iconContainer}>{icon}</View>}
-      <TextInput value={value} onChangeText={onChangeText} style={styles.inputTextName} placeholder={placeholder} secureTextEntry={secureText} />
+      <TextInput value={text} onChangeText={handleTextInput} style={styles.inputTextName} placeholder={placeholder} secureTextEntry={secureText} />
     </View>
   );
 };
