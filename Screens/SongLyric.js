@@ -12,26 +12,24 @@ const windowHeight = Dimensions.get('window').height;
 const SongLyric = ({ route }) => {
   const navigation = useNavigation();
   const { song } = route.params;
-  const [selectedWord, setSelectedWord] = useState('');
+  const [selectedWordInfo, setSelectedWordInfo] = useState({ en: "", tr: "", id: -1 });
   const [translation, setTranslation] = useState('');
   const [visible, setVisible] = useState(false);
 
   const addVocabulary = useVocabularyStore((state) => state.addVocabulary);
-  const removeVocabulary = useVocabularyStore((state) => state.removeVocabulary);
 
-  const handleWordClick = (selectedWord) => {
-    const translation = song.translations[selectedWord];
-
-    if (translation) {
-      setSelectedWord(selectedWord);
-      setTranslation(translation);
+  const handleWordClick = (wordInfo) => {
+    const _translation = song.translations.find(item => item.id === wordInfo.id);
+    if (_translation) {
+      setSelectedWordInfo(wordInfo);
+      setTranslation(_translation.tr);
       setVisible(true);
     }
   };
 
   const closeModal = () => {
     setVisible(false);
-    setSelectedWord('');
+    setSelectedWordInfo({ en: "", tr: "", id: -1 });
     setTranslation('');
   };
 
@@ -55,21 +53,20 @@ const SongLyric = ({ route }) => {
             </View>
           </View>
           <ScrollView>
-            <Text style={styles.lyrics}>
+            <View style={styles.lyricsContainer}>
               {song.lyrics.split(' ').map((word, index) => {
+                const wordInfo = song.translations.find(item => item.en === word);
+                const canBeTranslate = song.translations.some(item => item.en === word);
                 return (
-                  <Text key={index}>
-                    {Object.keys(song.translations).includes(word) ? (
-                      <Text onPress={() => handleWordClick(word)} style={styles.clickableWord}>
-                        {word + ' '}
-                      </Text>
-                    ) : (
-                      <Text>{word} </Text>
-                    )}
-                  </Text>
+                  canBeTranslate ?
+                    <Text key={index} onPress={() => handleWordClick(wordInfo)} style={styles.clickableWord}>
+                      {word}
+                    </Text> : <Text key={index} style={styles.lyrics}>
+                      {word}
+                    </Text>
                 );
               })}
-            </Text>
+            </View>
           </ScrollView>
         </View>
       </View>
@@ -77,9 +74,9 @@ const SongLyric = ({ route }) => {
         visible={visible}
         onClose={closeModal}
         translation={translation.charAt(0).toUpperCase() + translation.slice(1)}
-        word={selectedWord.charAt(0).toUpperCase() + selectedWord.slice(1)}
-        onSave={addVocabulary}
-        unSave={removeVocabulary}
+        word={selectedWordInfo.en.charAt(0).toUpperCase() + selectedWordInfo.en.slice(1)}
+        save={() => addVocabulary(selectedWordInfo)}
+        selectedWordInfo={selectedWordInfo}
       />
     </LinearGradient>
   );
@@ -143,18 +140,25 @@ const styles = StyleSheet.create({
   },
   lyrics: {
     color: '#E5B2CA',
-    padding: 10,
     fontSize: 18,
     fontWeight: '400',
-    lineHeight: 20,
     letterSpacing: 0.7,
+    padding: 3,
   },
   clickableWord: {
     color: '#E5B2CA',
     fontWeight: 'bold',
-    padding: 10,
     fontSize: 18,
+    padding: 3,
     letterSpacing: 0.7,
-    lineHeight: 20,
+
+  },
+  lyricsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+
+
+
   },
 });

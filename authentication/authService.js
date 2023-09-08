@@ -1,6 +1,8 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
 
+
+
 // Giriş yapma işlemi
 export const signIn = async (email, password) => {
   try {
