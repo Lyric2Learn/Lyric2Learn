@@ -1,15 +1,34 @@
 import { StyleSheet, Dimensions, Image, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomButton from '../Components/CustomButton';
+import { getCurrentUser } from '../authentication/authService';
+import { useNavigation } from '@react-navigation/native';
 
-const WelcomePage = ({ navigation }) => {
+const WelcomePage = () => {
   const letsGetStarted = 'Hadi Başlayalım...';
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    // Sayfa açıldığında mevcut kullanıcıyı kontrol et
+    const checkCurrentUser = async () => {
+      try {
+        const user = await getCurrentUser();
+        if (user) {
+          // Oturum açık bir kullanıcı varsa, Tabs sayfasına yönlendir
+          navigation.navigate('Tabs');
+        }
+      } catch (error) {
+        console.error('Oturum açık kullanıcı kontrol hatası:', error.message);
+      }
+    };
+
+    checkCurrentUser();
+  }, []); // Boş bağımlılık dizisi, bu etkileşimi yalnızca bir kez çalıştırır
 
   const gotoLogin = () => {
     navigation.navigate('Login');
   };
-
   return (
     <LinearGradient colors={['#E5B2CA', '#CF86DC']} style={styles.linear}>
       <View style={styles.container}>

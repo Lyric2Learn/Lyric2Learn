@@ -75,17 +75,10 @@ function NavigationScreen() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Welcome'>
         <Stack.Screen name='Welcome' component={WelcomePage} />
-        {!user ? (
-          <>
-            <Stack.Screen name='Login' component={LoginPage} />
-            <Stack.Screen name='SignUp' component={SignUp} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name='Tabs' component={BottomTabNavigator} />
-            <Stack.Screen name='SongLyric' component={SongLyric} />
-          </>
-        )}
+        <Stack.Screen name='Login' component={LoginPage} />
+        <Stack.Screen name='SignUp' component={SignUp} />
+        <Stack.Screen name='Tabs' component={BottomTabNavigator} />
+        <Stack.Screen name='SongLyric' component={SongLyric} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import { signIn } from '../authentication/authService';
 import { useFormik } from 'formik';
 import { useNavigation } from '@react-navigation/native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Geçerli bir e-posta girin').required('E-posta zorunlu'),
@@ -51,45 +52,50 @@ const LoginPage = () => {
 
   return (
     <LinearGradient colors={['#e5b2ca', '#cd82de']} style={styles.linear}>
-      <Image source={require('../Images/Sallyfirst.png')} style={styles.image} />
-      <CustomText header={header} title={title} />
-      <View style={styles.container}>
-        <CustomTextInput
-          icon={<Username />}
-          placeholder='E-posta'
-          onChangeText={formik.handleChange('email')}
-          onBlur={formik.handleBlur('email')}
-          value={formik.values.email}
-        />
-        {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
-        <CustomTextInput
-          icon={<Password />}
-          placeholder='Şifre'
-          onChangeText={formik.handleChange('password')}
-          onBlur={formik.handleBlur('password')}
-          value={formik.values.password}
-          secureTextEntry
-        />
-        {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
-      </View>
+      <KeyboardAwareScrollView>
+        <Image source={require('../Images/Sallyfirst.png')} style={styles.image} />
+        <CustomText header={header} title={title} />
+        <View style={styles.container}>
+          <CustomTextInput
+            icon={<Username />}
+            placeholder='E-posta'
+            onChangeText={formik.handleChange('email')}
+            onBlur={formik.handleBlur('email')}
+            value={formik.values.email}
+            secureText={false}
+            isLowerCase={true}
+          />
+          {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
+          <CustomTextInput
+            icon={<Password />}
+            placeholder='Şifre'
+            onChangeText={formik.handleChange('password')}
+            onBlur={formik.handleBlur('password')}
+            value={formik.values.password}
+            secureText={true}
+            isLowerCase={false}
+          />
+          {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
+        </View>
 
-      {loading ? (
-        <ActivityIndicator size={'large'} color={'#0000fff'} />
-      ) : (
-        <>
-          <View style={styles.buttonContainer}>
-            <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={formik.handleSubmit} />
+        {loading ? (
+          <ActivityIndicator size={'large'} color={'#0000fff'} />
+        ) : (
+          <>
+            <View style={styles.buttonContainer}>
+              <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={formik.handleSubmit} />
 
-            <CustomButton
-              buttonColor={'#ffffff47'}
-              titleColor={'#FFF'}
-              buttonName={createAccount}
-              onPress={gotoSignUpPage}
-              buttonShadow={styles.buttonShadow}
-            />
-          </View>
-        </>
-      )}
+              <CustomButton
+                buttonColor={'#ffffff47'}
+                titleColor={'#FFF'}
+                buttonName={createAccount}
+                onPress={gotoSignUpPage}
+                buttonShadow={styles.buttonShadow}
+              />
+            </View>
+          </>
+        )}
+      </KeyboardAwareScrollView>
     </LinearGradient>
   );
 };
