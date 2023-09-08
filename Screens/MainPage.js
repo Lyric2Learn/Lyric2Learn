@@ -6,6 +6,8 @@ import CustomSearchInput from '../Components/CustomSearchInput';
 import music_data from '../musicdata.json';
 import CustomSearchSong from '../Components/CustomSearchSong';
 import { useNavigation } from '@react-navigation/native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -32,32 +34,35 @@ const MainPage = () => {
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <View style={styles.container}>
-        {/* Lyric2Learn adlı Logo  */}
-        <View style={styles.logoContainer}>
-          <Image source={require('../Images/Lyric2LearnLogo.png')} />
+      <KeyboardAwareScrollView>
+        <View style={styles.container}>
+          {/* Lyric2Learn adlı Logo  */}
+          <View style={styles.logoContainer}>
+            <Image source={require('../Images/Lyric2LearnLogo.png')} />
+          </View>
+          {/* Search Alanı */}
+          <View style={styles.inputContainer}>
+            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
+          </View>
+          {/* Şarkı araması yapılmadan önce gözükecek resim */}
+          <View style={styles.backgroundView}>
+            {isVisible ? (
+              <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
+            ) : (
+              <FlatList
+                scrollEnabled={false}
+                data={filteredList}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
+                    <CustomSearchSong song={item} />
+                  </TouchableOpacity>
+                )}
+              />
+            )}
+          </View>
         </View>
-        {/* Search Alanı */}
-        <View style={styles.inputContainer}>
-          <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
-        </View>
-        {/* Şarkı araması yapılmadan önce gözükecek resim */}
-        <View style={styles.backgroundView}>
-          {isVisible ? (
-            <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
-          ) : (
-            <FlatList
-              data={filteredList}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
-                  <CustomSearchSong song={item} />
-                </TouchableOpacity>
-              )}
-            />
-          )}
-        </View>
-      </View>
+      </KeyboardAwareScrollView>
     </LinearGradient>
   );
 };

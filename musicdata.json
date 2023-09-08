@@ -3,80 +3,292 @@
     "id": "Music0",
     "songTitle": "Can't Help Falling in Love",
     "artist": "Elvis Presley",
-    "imageURL": "https://i1.sndcdn.com/artworks-000096420581-h3tz8s-t500x500.jpg",
-    "lyrics": " Wise men say \n Only fools rush in \n But I can't help falling in love with you \n Shall I stay? \n Would it be a sin? \n If I can't help falling in love with you \n Like a river flows \n Surely to the sea \n Darling, so it goes \n Some things are meant to be \n Take my hand \n Take my whole life too \n For I can't help falling in love with you \n Like a river flows \n Surely to the sea \n Darling, so it goes \n  Some things are meant to be \n Take my hand \n Take my whole life, too \n For I can't help falling in love with you \n For I can't help \n Falling in love with you \n",
-    "translations": {
-      "0": { "en": "Wise", "tr": "Bilge" },
-      "1": { "en": "Rush in", "tr": "Aceleye getirmek" },
-      "2": { "en": "Shall I stay?", "tr": "Kalayım mı?" },
-      "3": { "en": "Sin", "tr": "Günah" },
-      "4": { "en": "River", "tr": "Nehir" },
-      "5": { "en": "Surely", "tr": "Mutlaka" },
-      "6": { "en": "Darling", "tr": "Sevgilim" },
-      "7": { "en": "So it goes", "tr": "Öyle oluyor" },
-      "8": { "en": "Some things", "tr": "Bazı şeyler" },
-      "9": { "en": "Take my hand", "tr": "Elimi tut" },
-      "10": { "en": "Whole life", "tr": "Tüm hayatımı" },
-      "11": { "en": "I can't help falling in love", "tr": "Aşık olmaktan kendimi alamıyorum" }
-    }
+    "imageURL": "https://picsum.photos/200/300?grayscale",
+    "lyrics": " Wise men say Only fools rush in But I can't help falling in love with you Shall I stay? Would it be a sin? If I can't help falling in love with you Like a river flows Surely to the sea Darling, so it goes Some things are meant to be Take my hand Take my whole life too For I can't help falling in love with you Like a river flows Surely to the sea Darling, so it goes  Some things are meant to be Take my hand Take my whole life, too For I can't help falling in love with you For I can't help Falling in love with you",
+    "translations": [
+      {
+        "id": 0,
+        "en": "Wise",
+        "tr": "Bilge"
+      },
+      {
+        "id": 1,
+        "en": "rush",
+        "tr": "Acele Etmek"
+      },
+      {
+        "id": 2,
+        "en": "stay",
+        "tr": "Kalmak"
+      },
+      {
+        "id": 3,
+        "en": "sin",
+        "tr": "Günah"
+      },
+      {
+        "id": 4,
+        "en": "river",
+        "tr": "Nehir"
+      },
+      {
+        "id": 5,
+        "en": "Surely",
+        "tr": "Mutlaka"
+      },
+      {
+        "id": 6,
+        "en": "Darling",
+        "tr": "Sevgilim"
+      },
+      {
+        "id": 7,
+        "en": "so",
+        "tr": "Bu yüzden"
+      },
+      {
+        "id": 8,
+        "en": "some",
+        "tr": "Bazı"
+      },
+      {
+        "id": 9,
+        "en": "hand",
+        "tr": "El"
+      },
+      {
+        "id": 10,
+        "en": "whole",
+        "tr": "Tüm"
+      },
+      {
+        "id": 11,
+        "en": "Falling",
+        "tr": "Düşmek"
+      }
+    ]
   },
   {
     "id": "Music1",
     "songTitle": "I Will Always Love You",
     "artist": "Whitney Houston",
-    "imageURL": "https://m.media-amazon.com/images/I/61jeTXmibuL._UF1000,1000_QL80_.jpg",
-    "lyrics": " If I should stay \n I would only be in your way \n So I'll go but I know \n I'll think of you every step of the way \n And I will always love you \n I will always love you \n You \n My darling, you \n Mmm-mm \n Bittersweet memories \n That is all I'm taking with me \n So good-bye \n Please don't cry: \n We both know I'm not what you, you need \n And I... will always love you \n I... will always love you \n You, ooh \n I hope life treats you kind \n And I hope you have all you've dreamed of \n And I'm wishing you joy and happiness \n But above all this, I wish you love \n And I... will always love you \n I will always love you \n I will always love you \n I will always love you \n I will always love you \n I, I will always love you \n You \n Darling, I love you \n I'll always \n I'll always love you \n Ooh \n Ooh \n",
-    "translations": {
-      "12": { "en": "If I should stay", "tr": "Eğer kalırsam" },
-      "13": { "en": "Your way", "tr": "Senin yolun" },
-      "14": { "en": "So I'll go", "tr": "O yüzden gideceğim" },
-      "15": { "en": "Every step of the way", "tr": "Yolun her adımında" },
-      "16": { "en": "I will always love you", "tr": "Seni her zaman seveceğim" },
-      "17": { "en": "My darling", "tr": "Sevgilim" },
-      "18": { "en": "Bittersweet memories", "tr": "Acı tatlı anılar" },
-      "19": { "en": "All I'm taking with me", "tr": "Yanıma aldığım tek şey" },
-      "20": { "en": "So goodbye", "tr": "O yüzden elveda" },
-      "21": { "en": "Don't cry", "tr": "Ağlama" },
-      "22": { "en": "We both know", "tr": "İkimiz de biliyoruz" },
-      "23": { "en": "I'm not what you, you need", "tr": "Ben senin ihtiyacın olan şey değilim" },
-      "24": { "en": "Treats you kind", "tr": "Sana nazik davranır" },
-      "25": { "en": "All you've dreamed of", "tr": "Hayalini kurduğun her şey" },
-      "26": { "en": "I wish to you joy and happiness", "tr": "Sana neşe ve mutluluk diliyorum" },
-      "27": { "en": "But above all this", "tr": "Ama hepsinden önemlisi" }
-    }
+    "imageURL": "https://picsum.photos/200/300/?blur",
+    "lyrics": " If I should stay I would only be in your way So I'll go but I know I'll think of you every step of the way And I will always love you I will always love you You My darling, you Mmm-mm Bittersweet memories That is all I'm taking with me So good-bye Please don't cry: We both know I'm not what you, you need And I... will always love you I... will always love you You, ooh I hope life treats you kind And I hope you have all you've dreamed of And I'm wishing you joy and happiness But above all this, I wish you love And I... will always love you I will always love you I will always love you I will always love you I will always love you I, I will always love you You Darling, I love you I'll always I'll always love you Ooh Ooh",
+    "translations": [
+      {
+        "id": 12,
+        "en": "If",
+        "tr": "Eğer"
+      },
+      {
+        "id": 13,
+        "en": "way",
+        "tr": "Yol"
+      },
+      {
+        "id": 14,
+        "en": "go",
+        "tr": "Gitmek"
+      },
+      {
+        "id": 15,
+        "en": "step",
+        "tr": "Adım"
+      },
+      {
+        "id": 16,
+        "en": "always",
+        "tr": "Her zaman"
+      },
+      {
+        "id": 17,
+        "en": "memories",
+        "tr": "Hatıralar"
+      },
+      {
+        "id": 18,
+        "en": "bittersweet",
+        "tr": "Acı tatlı"
+      },
+      {
+        "id": 19,
+        "en": "with",
+        "tr": "İle"
+      },
+      {
+        "id": 20,
+        "en": "good-bye",
+        "tr": "Elveda"
+      },
+      {
+        "id": 21,
+        "en": "cry",
+        "tr": "Ağlamak"
+      },
+      {
+        "id": 22,
+        "en": "know",
+        "tr": "Bilmek"
+      },
+      {
+        "id": 23,
+        "en": "need",
+        "tr": "İhtiyaç Duymak"
+      },
+      {
+        "id": 24,
+        "en": "kind",
+        "tr": "Nazik"
+      },
+      {
+        "id": 25,
+        "en": "dream",
+        "tr": "Hayal"
+      },
+      {
+        "id": 26,
+        "en": "joy",
+        "tr": "Neşe"
+      },
+      {
+        "id": 27,
+        "en": "above",
+        "tr": "Üstünde"
+      }
+    ]
   },
   {
     "id": "Music2",
     "songTitle": "Imagine",
     "artist": "John Lennon",
-    "imageURL": "https://i.scdn.co/image/ab67616d0000b27399581550ef9746ca582bb3cc",
-    "lyrics": "Imagine there's no heaven \n It's easy if you try \n No hell below us \n Above us, only sky \n Imagine all the people \n Living for today \n I \n Imagine there's no countries \n It isn't hard to do \n Nothing to kill or die for \n And no religion too \n Imagine all the people \n Living life in peace \n You \n You may say I'm a dreamer \n But I'm not the only one \n I hope someday you'll join us \n And the world will be as one \n Imagine no possessions \n I wonder if you can \n No need for greed or hunger \n A brotherhood of man \n Imagine all the people \n Sharing all the world \n You \n You may say I'm a dreamer \n But I'm not the only one \n I hope someday you'll join us \n And the world will live as one \n",
-    "translations": {
-      "28": { "en": "Heaven", "tr": "Cennet" },
-      "29": { "en": "Try", "tr": "Denemek" },
-      "30": { "en": "Hell", "tr": "Cehennem" },
-      "31": { "en": "Below us", "tr": "Altımızda" },
-      "32": { "en": "Above us", "tr": "Üstümüzde" },
-      "33": { "en": "Imagine", "tr": "Hayal etmek" },
-      "34": { "en": "Living for today", "tr": "Bugün için yaşamak" },
-      "35": { "en": "Countries", "tr": "Ülke" },
-      "36": { "en": "Hard", "tr": "Zor" },
-      "37": { "en": "Kill", "tr": "Öldürmek" },
-      "38": { "en": "Die", "tr": "Ölmek" },
-      "39": { "en": "Religion", "tr": "Din" },
-      "40": { "en": "Living", "tr": "Yaşamak" },
-      "41": { "en": "Dreamer", "tr": "Hayalperest" },
-      "42": { "en": "I'm not the only one", "tr": "Bir tek ben değilim" },
-      "43": { "en": "possessions", "tr": "Eşya" },
-      "44": { "en": "Wonder", "tr": "Merak etmek" },
-      "45": { "en": "Hunger", "tr": "Açlık" },
-      "46": { "en": "brotherhood", "tr": "Kardeşlik" },
-      "47": { "en": "People", "tr": "İnsan" },
-      "48": { "en": "Sharing", "tr": "Paylaşmak" },
-      "49": { "en": "You may say", "tr": "Söyleyebilirsin" },
-      "50": { "en": "Join", "tr": "Katılmak" },
-      "51": { "en": "World", "tr": "Dünya" },
-      "52": { "en": "Someday", "tr": "Bir gün" }
-    }
+    "imageURL": "https://picsum.photos/200/300/?blur",
+    "lyrics": "Imagine there's no heaven It's easy if you try No hell below us, Above us, only sky, Imagine all the people Living for today I Imagine there's no countries It isn't hard to do Nothing to kill or die for And no religion too Imagine all the people Living life in peace You You may say I'm a dreamer But I'm not the only one I hope someday you'll join us And the world will be as one Imagine no possessions I wonder if you can No need for greed or hunger A brotherhood of man Imagine all the people Sharing all the world You You may say I'm a dreamer But I'm not the only one I hope someday you'll join us And the world will live as one",
+    "translations": [
+      {
+        "id": 28,
+        "en": "heaven",
+        "tr": "Cennet"
+      },
+      {
+        "id": 29,
+        "en": "try",
+        "tr": "Denemek"
+      },
+      {
+        "id": 30,
+        "en": "hell",
+        "tr": "Cehennem"
+      },
+      {
+        "id": 31,
+        "en": "below",
+        "tr": "Alt"
+      },
+      {
+        "id": 32,
+        "en": "sky",
+        "tr": "Gökyüzü"
+      },
+      {
+        "id": 33,
+        "en": "Imagine",
+        "tr": "Hayal etmek"
+      },
+      {
+        "id": 34,
+        "en": "today",
+        "tr": "Bugün "
+      },
+      {
+        "id": 35,
+        "en": "countries",
+        "tr": "Ülkeler"
+      },
+      {
+        "id": 36,
+        "en": "hard",
+        "tr": "Zor"
+      },
+      {
+        "id": 37,
+        "en": "kill",
+        "tr": "Öldürmek"
+      },
+      {
+        "id": 38,
+        "en": "die",
+        "tr": "Ölmek"
+      },
+      {
+        "id": 39,
+        "en": "religion",
+        "tr": "Din"
+      },
+      {
+        "id": 40,
+        "en": "living",
+        "tr": "Yaşamak"
+      },
+      {
+        "id": 41,
+        "en": "dreamer",
+        "tr": "Hayalperest"
+      },
+      {
+        "id": 42,
+        "en": "only",
+        "tr": "Sadece"
+      },
+      {
+        "id": 43,
+        "en": "possessions",
+        "tr": "Eşya"
+      },
+      {
+        "id": 44,
+        "en": "wonder",
+        "tr": "Merak etmek"
+      },
+      {
+        "id": 45,
+        "en": "hunger",
+        "tr": "Açlık"
+      },
+      {
+        "id": 46,
+        "en": "brotherhood",
+        "tr": "Kardeşlik"
+      },
+      {
+        "id": 47,
+        "en": "People",
+        "tr": "İnsan"
+      },
+      {
+        "id": 48,
+        "en": "sharing",
+        "tr": "Paylaşmak"
+      },
+      {
+        "id": 49,
+        "en": "say",
+        "tr": "Söylemek"
+      },
+      {
+        "id": 50,
+        "en": "join",
+        "tr": "Katılmak"
+      },
+      {
+        "id": 51,
+        "en": "world",
+        "tr": "Dünya"
+      },
+      {
+        "id": 52,
+        "en": "someday",
+        "tr": "Bir gün"
+      }
+    ]
   }
 ]

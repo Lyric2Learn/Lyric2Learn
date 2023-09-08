@@ -17,9 +17,9 @@ const VocablaryListPage = () => {
         </View>
         <View style={styles.backgroundView}>
           <ScrollView>
-            {vocabulary.map((item, index) => (
-              <Text key={index} style={styles.word}>
-                {item.word} : {item.translation}
+            {vocabulary.map((item) => (
+              <Text key={item.id} style={styles.word}>
+                {item.en.charAt(0).toUpperCase() + item.en.slice(1)} : {item.tr.charAt(0).toUpperCase() + item.tr.slice(1)}
               </Text>
             ))}
           </ScrollView>
