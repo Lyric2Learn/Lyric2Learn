@@ -77,7 +77,7 @@ const LoginPage = () => {
         <ActivityIndicator size={'large'} color={'#0000fff'} />
       ) : (
         <>
-          <View style={styles.buttonContainer}>
+          <View style={styles.inputcontainer}>
             <CustomButton buttonColor={'#78258B'} buttonName={continueName} titleColor={'#FFF'} onPress={formik.handleSubmit} />
 
             <CustomButton
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+
   },
   image: {
     resizeMode: 'contain',

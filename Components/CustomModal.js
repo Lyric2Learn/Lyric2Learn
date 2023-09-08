@@ -2,33 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 import Unsave from '../Images/Svg/unsave';
 import Save from '../Images/Svg/save';
+import useVocabularyStore from '../Store/useStore';
 
-const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
+const CustomHalfModal = ({ visible, onClose, translation, word, save, selectedWordInfo }) => {
+  const vocabulary = useVocabularyStore((state) => state.vocabulary);
 
   const toggleSave = () => {
-    setIsSaved(!isSaved); // isSaved değerini tersine çevir
-
-    if (isSaved) {
-      unSave({ word, translation });
-    } else {
-      onSave({ word, translation });
-    }
+    save()
+    console.log(vocabulary);
   };
 
-  useEffect(() => {
-    setModalVisible(visible);
-  }, [visible]);
 
   return (
     <Modal
       animationType='slide'
       transparent={true}
-      visible={modalVisible}
+      visible={visible}
       onRequestClose={() => {
         onClose();
-        setModalVisible(false);
       }}
     >
       <View style={styles.modalContainer}>
@@ -38,7 +29,7 @@ const CustomHalfModal = ({ visible, onClose, translation, word, onSave, unSave }
               <Text style={styles.selectedWord}>{word}</Text>
               <Text style={styles.translationText}>{translation}</Text>
             </View>
-            <TouchableOpacity onPress={toggleSave}>{isSaved ? <Save /> : <Unsave />}</TouchableOpacity>
+            <TouchableOpacity onPress={toggleSave}>{vocabulary.some(item => item.id === selectedWordInfo.id) ? <Save /> : <Unsave />}</TouchableOpacity>
           </View>
           <TouchableOpacity onPress={() => onClose()} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>

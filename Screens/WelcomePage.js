@@ -3,6 +3,7 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomButton from '../Components/CustomButton';
 
+
 const WelcomePage = ({ navigation }) => {
   const letsGetStarted = 'Hadi Başlayalım...';
 

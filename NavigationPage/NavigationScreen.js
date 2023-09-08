@@ -30,6 +30,7 @@ const BottomTabNavigator = () => {
           headerShown: false,
           tabBarStyle: {
             backgroundColor: '#FFFFFF',
+            opacity: 0.6,
             padding: 5,
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30,
@@ -40,13 +41,15 @@ const BottomTabNavigator = () => {
           name='Anasayfa'
           component={MainPage}
           options={{
-            tabBarIcon: ({ color, size }) => <Search width={size} height={size} fill={color} />,
+            tabBarLabel: ({ focused, color, size }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Anasayfa</Text>),
+            tabBarIcon: ({ color, size, }) => <Search width={size} height={size} fill={color} />,
           }}
         />
         <Tab.Screen
           name='Liste'
           component={VocablaryListPage}
           options={{
+            tabBarLabel: ({ focused, color, size }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Liste</Text>),
             tabBarIcon: ({ color, size }) => <List width={size} height={size} fill={color} />,
           }}
         />
@@ -54,6 +57,7 @@ const BottomTabNavigator = () => {
           name='Profil'
           component={ProfilePage}
           options={{
+            tabBarLabel: ({ focused, color, size }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Profil</Text>),
             tabBarIcon: ({ color, size }) => <User width={size} height={size} fill={color} />,
           }}
         />
@@ -86,6 +90,7 @@ function NavigationScreen() {
             <Stack.Screen name='SongLyric' component={SongLyric} />
           </>
         )}
+
       </Stack.Navigator>
     </NavigationContainer>
   );
