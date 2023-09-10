@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Dimensions, FlatList, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Search from '../Images/Svg/search';
@@ -7,12 +7,43 @@ import music_data from '../musicdata.json';
 import CustomSearchSong from '../Components/CustomSearchSong';
 import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
+import { db } from '../authentication/firebaseConfig';
 
+// Belirli bir dökümanı getirmek için
+const fetchData = async () => {
+  const docRef = doc(db, 'songs', 'Music_0'); // Sadece Music_0 getirir
+  getDoc(docRef)
+    .then((docSnap) => {
+      if (docSnap.exists()) {
+        console.log('Document data:', docSnap.data());
+      } else {
+        console.log('No such document!');
+      }
+    })
+    .catch((error) => {
+      console.error('Veri çekme hatası:', error);
+    });
+};
+
+fetchData();
+
+//Koleksiyonun içindeki her şeye ulaşmak için
+const fetchCollectionData = async () => {
+  const collectionRef = collection(db, 'songs');
+  const querySnapshot = await getDocs(collectionRef); // Tüm belgeleri getirin
+
+  querySnapshot.forEach((doc) => {
+    // Her belgeyi işleyin
+    console.log('Document data:', doc.id, doc.data());
+  });
+};
+
+fetchCollectionData();
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-// AnaSayfa UI Kodları
 const MainPage = () => {
   const navigation = useNavigation();
   const [searchText, setSearchText] = useState('');
