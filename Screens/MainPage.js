@@ -1,45 +1,13 @@
 import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Search from '../Images/Svg/search';
 import CustomSearchInput from '../Components/CustomSearchInput';
-import music_data from '../musicdata.json';
 import CustomSearchSong from '../Components/CustomSearchSong';
 import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../authentication/firebaseConfig';
-
-// Belirli bir dökümanı getirmek için
-const fetchData = async () => {
-  const docRef = doc(db, 'songs', 'Music_0'); // Sadece Music_0 getirir
-  getDoc(docRef)
-    .then((docSnap) => {
-      if (docSnap.exists()) {
-        console.log('Document data:', docSnap.data());
-      } else {
-        console.log('No such document!');
-      }
-    })
-    .catch((error) => {
-      console.error('Veri çekme hatası:', error);
-    });
-};
-
-fetchData();
-
-//Koleksiyonun içindeki her şeye ulaşmak için
-const fetchCollectionData = async () => {
-  const collectionRef = collection(db, 'songs');
-  const querySnapshot = await getDocs(collectionRef); // Tüm belgeleri getirin
-
-  querySnapshot.forEach((doc) => {
-    // Her belgeyi işleyin
-    console.log('Document data:', doc.id, doc.data());
-  });
-};
-
-fetchCollectionData();
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -48,6 +16,24 @@ const MainPage = () => {
   const navigation = useNavigation();
   const [searchText, setSearchText] = useState('');
   const [isVisible, setVisible] = useState(true);
+  const [musicData, setMusicData] = useState([]);
+
+  useEffect(() => {
+    // Firestore'dan verileri çekmek için bir etkileşimli işlev kullanıyoruz
+    const fetchCollectionData = async () => {
+      const collectionRef = collection(db, 'songs');
+      const querySnapshot = await getDocs(collectionRef);
+
+      const data = []; // Firestore verilerini saklamak için boş bir dizi tanımlıyoruz
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() }); // Her belgeyi diziye ekliyoruz
+      });
+
+      setMusicData(data); // Firestore verilerini state'e atıyoruz
+    };
+
+    fetchCollectionData(); // Firestore verilerini çekmek için işlevi çağırıyoruz
+  }, []); // [] içine bir bağımlılık dizisi ekledik, böylece bu yalnızca bir kere çalışır
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -55,7 +41,7 @@ const MainPage = () => {
     setVisible(isTextEmpty || filteredList.length === 0 || !text);
   };
 
-  const filteredList = music_data.filter((song) => {
+  const filteredList = musicData.filter((song) => {
     const searchedText = searchText.toLowerCase();
     const currentTitle = song.artist.toLowerCase();
     const currentSongTitle = song.songTitle.toLowerCase();
