@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
@@ -49,45 +49,51 @@ const ProfilePage = () => {
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <View style={styles.logoContainer}>
-        <Image source={require('../Images/Lyric2LearnLogo.png')} />
-      </View>
-      <View style={styles.container}>
-        <CustomTextInput
-          icon={<Password />}
-          placeholder='Mevcut Şifre'
-          onChangeText={(text) => setOldPassword(text)}
-          value={oldPassword}
-          secureText={true}
-          isLowerCase={false}
-        />
+      <SafeAreaView>
+        <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Image source={require('../Images/Lyric2LearnLogo.png')} />
+          </View>
+          <View style={styles.backgroundView}>
+            <View style={styles.insideStyle}>
+              <CustomTextInput
+                icon={<Password />}
+                placeholder='Mevcut Şifre'
+                onChangeText={(text) => setOldPassword(text)}
+                value={oldPassword}
+                secureText={true}
+                isLowerCase={false}
+              />
 
-        <CustomTextInput
-          icon={<Password />}
-          placeholder='Yeni Şifre'
-          onChangeText={(text) => setNewPassword(text)}
-          value={newPassword}
-          secureText={true}
-          isLowerCase={false}
-        />
-        <CustomTextInput
-          icon={<Password />}
-          placeholder='Yeni Şifre (Tekrar)'
-          onChangeText={(text) => setConfirmNewPassword(text)}
-          value={confirmNewPassword}
-          secureText={true}
-          isLowerCase={false}
-        />
-        {error && <Text style={styles.error}>{error}</Text>}
-        <CustomButton
-          buttonColor={'#E5B2CA'}
-          titleColor={'#FFF'}
-          buttonName={'Şifre Değiştir'}
-          onPress={handleChangePassword}
-          buttonShadow={styles.buttonShadow}
-        />
-        <CustomButton buttonColor={'#E5B2CA'} titleColor={'#FFF'} buttonName={'Çıkış Yap'} onPress={handleLogout} buttonShadow={styles.buttonShadow} />
-      </View>
+              <CustomTextInput
+                icon={<Password />}
+                placeholder='Yeni Şifre'
+                onChangeText={(text) => setNewPassword(text)}
+                value={newPassword}
+                secureText={true}
+                isLowerCase={false}
+              />
+              <CustomTextInput
+                icon={<Password />}
+                placeholder='Yeni Şifre (Tekrar)'
+                onChangeText={(text) => setConfirmNewPassword(text)}
+                value={confirmNewPassword}
+                secureText={true}
+                isLowerCase={false}
+              />
+              {error && <Text style={styles.error}>{error}</Text>}
+              <CustomButton
+                buttonColor={'#E5B2CA'}
+                titleColor={'#FFF'}
+                buttonName={'Şifre Değiştir'}
+                onPress={handleChangePassword}
+                buttonShadow={styles.buttonShadow}
+              />
+              <CustomButton buttonColor={'#E5B2CA'} titleColor={'#FFF'} buttonName={'Çıkış Yap'} onPress={handleLogout} buttonShadow={styles.buttonShadow} />
+            </View>
+          </View>
+        </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -97,16 +103,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignContent: 'center',
+    justifyContent: 'space-evenly'
+  },
+  backgroundView: {
     alignSelf: 'center',
     backgroundColor: '#ffffff99',
     height: windowHeight / 1.4,
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
-    marginTop: 100,
   },
   error: {
     color: 'red',
@@ -114,10 +119,11 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignSelf: 'center',
-    marginLeft: 30,
-    marginTop: 50,
-    marginBottom: -80,
+    marginTop: 10,
+    marginBottom: -30,
   },
+
+
 });
 
 export default ProfilePage;

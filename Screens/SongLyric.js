@@ -57,11 +57,15 @@ const SongLyric = ({ route }) => {
               {song.lyrics.split(' ').map((word, index) => {
                 const wordInfo = song.translations.find(item => item.en === word);
                 const canBeTranslate = song.translations.some(item => item.en === word);
+                const isFirstLetterCapitalized = /^[A-Z]/.test(word);
+
                 return (
                   canBeTranslate ?
                     <Text key={index} onPress={() => handleWordClick(wordInfo)} style={styles.clickableWord}>
                       {word}
-                    </Text> : <Text key={index} style={styles.lyrics}>
+                    </Text>
+                    :
+                    <Text key={index} style={styles.lyrics}>
                       {word}
                     </Text>
                 );
@@ -144,10 +148,12 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     letterSpacing: 0.7,
     padding: 3,
+
   },
   clickableWord: {
     color: '#E5B2CA',
     fontWeight: 'bold',
+    padding: 3,
     fontSize: 18,
     padding: 3,
     letterSpacing: 0.7,
@@ -157,8 +163,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
-
-
-
   },
 });
