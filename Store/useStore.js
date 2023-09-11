@@ -10,11 +10,27 @@ const useVocabularyStore = create(
         set((state) => ({
           vocabulary: state.vocabulary.some(item => item.id === word.id) ? state.vocabulary.filter(item => item.id !== word.id) : [...state.vocabulary, word],
         })),
+      deleteVocabulary: (wordId) => {
+        set((state) => ({
+          vocabulary: state.vocabulary.filter(item => item.id !== wordId)
+        }));
+      },
+      initialize: async () => {
+        try {
+          const savedData = await AsyncStorage.getItem('handleVocabulary');
+          if (savedData) {
+            set(JSON.parse(savedData));
+          }
+        } catch (error) {
+          console.error('Veri geri yükleme hatası:', error);
+        }
+      },
     }),
     {
       name: 'handleVocabulary',
-      storage: createJSONStorage(() => AsyncStorage)
-    }
+      storage: createJSONStorage(() => AsyncStorage),
+      onRehydrate: (state) => ({ ...state }),
+    },
   )
 );
 

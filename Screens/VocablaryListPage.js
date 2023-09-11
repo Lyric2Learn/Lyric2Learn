@@ -1,30 +1,41 @@
-import { StyleSheet, Text, View, Image, Dimensions, ScrollView } from 'react-native';
-import React from 'react';
+import { StyleSheet, View, Image, Dimensions, SafeAreaView, } from 'react-native';
+import React, { useRef, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import useVocabularyStore from '../Store/useStore';
+import CustomVocablary from '../Components/CustomVocablary';
+import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const VocablaryListPage = () => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);
+  const deleteVocabulary = useVocabularyStore((state) => state.deleteVocabulary)
+
+  const handleDelete = (wordId) => {
+    deleteVocabulary(wordId);
+  };
+  const scrollRef = useRef(null);
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image source={require('../Images/Lyric2LearnLogo.png')} />
+      <SafeAreaView>
+        <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Image source={require('../Images/Lyric2LearnLogo.png')} />
+          </View>
+          <View style={styles.backgroundView}>
+            <GestureHandlerRootView>
+              <ScrollView ref={scrollRef}>
+                {vocabulary.map((item) => (
+                  <CustomVocablary item={item} key={item.id} dismiss={() => handleDelete(item.id)} simultaneousHandlers={scrollRef} />
+                ))}
+              </ScrollView>
+            </GestureHandlerRootView>
+          </View>
         </View>
-        <View style={styles.backgroundView}>
-          <ScrollView>
-            {vocabulary.map((item) => (
-              <Text key={item.id} style={styles.word}>
-                {item.en.charAt(0).toUpperCase() + item.en.slice(1)} : {item.tr.charAt(0).toUpperCase() + item.tr.slice(1)}
-              </Text>
-            ))}
-          </ScrollView>
-        </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -36,14 +47,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1,
     justifyContent: 'space-evenly',
   },
   logoContainer: {
     alignSelf: 'center',
-    marginLeft: 30,
-    marginTop: 20,
-    marginBottom: -50,
+    marginTop: 10,
+    marginBottom: -30,
   },
   backgroundView: {
     alignSelf: 'center',
@@ -53,18 +62,5 @@ const styles = StyleSheet.create({
     margin: 8,
     borderRadius: 10,
   },
-  word: {
-    alignSelf: 'center',
-    textAlign: 'left',
-    height: windowHeight / 16,
-    width: windowWidth / 1.2,
-    margin: 10,
-    padding: 15,
-    borderRadius: 20,
-    backgroundColor: 'white',
-    fontSize: 20,
-    fontWeight: '500',
-    letterSpacing: 0.7,
-    color: '#E5B2CA',
-  },
+
 });

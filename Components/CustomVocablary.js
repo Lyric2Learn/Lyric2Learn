@@ -1,0 +1,123 @@
+import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import React from 'react'
+import { PanGestureHandler } from 'react-native-gesture-handler'
+import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
+import Delete from '../Images/Svg/delete'
+
+const heightContainer = 70;
+const windowWidth = Dimensions.get('window').width;
+const translationXThresHold = -windowWidth * 0.12;
+
+const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
+    const translationX = useSharedValue(0);
+    const itemHeight = useSharedValue(heightContainer);
+    const marginVertical = useSharedValue(10);
+    const opacity = useSharedValue(1);
+
+    const handleDismiss = () => {
+        dismiss(item.id);
+    }
+
+    const panGesture = useAnimatedGestureHandler({
+        onActive: (event) => {
+            translationX.value = event.translationX
+        },
+        onEnd: () => {
+            const invisibilty = translationX.value < translationXThresHold;
+            if (invisibilty) {
+                translationX.value = withTiming(-windowWidth);
+                itemHeight.value = withTiming(0);
+                marginVertical.value = withTiming(0);
+                opacity.value = withTiming(0), undefined, (isFinished) => {
+                    if (isFinished) {
+                        handleDismiss();
+                    }
+                };
+            } else {
+                translationX.value = withTiming(0);
+            }
+        }
+    })
+
+    const rStyle = useAnimatedStyle(() => ({
+        transform: [{
+            translateX: withSpring(translationX.value),
+        }]
+    }))
+
+    const rIconStyle = useAnimatedStyle(() => {
+        const opacity = translationX.value < translationXThresHold ? 1 : 0;
+        return { opacity }
+    })
+
+    const rContainerStyle = useAnimatedStyle(() => {
+        return {
+            height: itemHeight.value,
+            marginVertical: marginVertical.value,
+            opacity: opacity.value,
+        }
+    })
+    return (
+        <Animated.View style={[styles.mainContainer, rContainerStyle]}>
+            <Animated.View style={[styles.iconContainer, rIconStyle]}>
+                <Delete dismiss={handleDismiss} />
+            </Animated.View>
+            <PanGestureHandler simultaneousHandlers={simultaneousHandlers} onGestureEvent={panGesture}>
+                <Animated.View style={[styles.container, rStyle]}>
+                    <Text key={item.id} style={styles.word}>
+                        {item.en} : {item.tr}
+                    </Text>
+                </Animated.View>
+            </PanGestureHandler>
+        </Animated.View>
+
+    )
+}
+
+export default CustomVocablary
+
+const styles = StyleSheet.create({
+    mainContainer: {
+        alignItems: 'center',
+        width: '100%',
+    },
+    container: {
+        width: '90%',
+        height: heightContainer,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 50,
+        backgroundColor: 'white',
+        shadowColor: '##dcdcdc40',
+        shadowOpacity: 0.2,
+        shadowRadius: 3.84,
+        elevation: 5,
+        shadowOffset: {
+            width: 0.1,
+            height: 4,
+        }
+    },
+    word: {
+        textTransform: 'capitalize',
+        justifyContent: 'center',
+        textAlign: 'left',
+        width: '80%',
+        marginVertical: 22,
+        justifyContent: 'center',
+        paddingLeft: 20,
+        fontSize: 20,
+        fontWeight: '500',
+        letterSpacing: 0.7,
+        color: '#E5B2CA',
+    },
+    iconContainer: {
+        height: heightContainer / 1.5,
+        width: heightContainer / 1.5,
+        backgroundColor: 'transparent',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        position: 'absolute',
+        right: '10%',
+        borderRadius: 100,
+    }
+})

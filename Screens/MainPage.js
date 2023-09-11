@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Search from '../Images/Svg/search';
@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../authentication/firebaseConfig';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -52,33 +53,35 @@ const MainPage = () => {
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
       <KeyboardAwareScrollView>
-        <View style={styles.container}>
-          {/* Lyric2Learn adlı Logo  */}
-          <View style={styles.logoContainer}>
-            <Image source={require('../Images/Lyric2LearnLogo.png')} />
+        <SafeAreaView>
+          <View style={styles.container}>
+            {/* Lyric2Learn adlı Logo  */}
+            <View style={styles.logoContainer}>
+              <Image source={require('../Images/Lyric2LearnLogo.png')} />
+            </View>
+            {/* Search Alanı */}
+            <View style={styles.inputContainer}>
+              <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
+            </View>
+            {/* Şarkı araması yapılmadan önce gözükecek resim */}
+            <View style={styles.backgroundView}>
+              {isVisible ? (
+                <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
+              ) : (
+                <FlatList
+                  scrollEnabled={false}
+                  data={filteredList}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
+                      <CustomSearchSong song={item} />
+                    </TouchableOpacity>
+                  )}
+                />
+              )}
+            </View>
           </View>
-          {/* Search Alanı */}
-          <View style={styles.inputContainer}>
-            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
-          </View>
-          {/* Şarkı araması yapılmadan önce gözükecek resim */}
-          <View style={styles.backgroundView}>
-            {isVisible ? (
-              <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
-            ) : (
-              <FlatList
-                scrollEnabled={false}
-                data={filteredList}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                  <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
-                    <CustomSearchSong song={item} />
-                  </TouchableOpacity>
-                )}
-              />
-            )}
-          </View>
-        </View>
+        </SafeAreaView>
       </KeyboardAwareScrollView>
     </LinearGradient>
   );
@@ -96,8 +99,8 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignSelf: 'center',
-    marginBottom: -50,
-    marginTop: 20,
+    marginBottom: -30,
+    marginTop: 10,
   },
   inputContainer: {
     flexShrink: 0,
