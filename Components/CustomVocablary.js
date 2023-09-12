@@ -1,23 +1,19 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
+import Animated, { runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
 import Delete from '../Images/Svg/delete'
+import useVocabularyStore from '../Store/useStore'
 
 const heightContainer = 70;
 const windowWidth = Dimensions.get('window').width;
 const translationXThresHold = -windowWidth * 0.12;
 
-const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
+const CustomVocablary = ({ item, dismiss, simultaneousHandlers, }) => {
     const translationX = useSharedValue(0);
     const itemHeight = useSharedValue(heightContainer);
     const marginVertical = useSharedValue(10);
     const opacity = useSharedValue(1);
-
-    const handleDismiss = () => {
-        dismiss(item.id);
-    }
-
     const panGesture = useAnimatedGestureHandler({
         onActive: (event) => {
             translationX.value = event.translationX
@@ -30,7 +26,7 @@ const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
                 marginVertical.value = withTiming(0);
                 opacity.value = withTiming(0), undefined, (isFinished) => {
                     if (isFinished) {
-                        handleDismiss();
+                        runOnJS(dismiss)(item.id);
                     }
                 };
             } else {
@@ -60,7 +56,7 @@ const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
     return (
         <Animated.View style={[styles.mainContainer, rContainerStyle]}>
             <Animated.View style={[styles.iconContainer, rIconStyle]}>
-                <Delete dismiss={handleDismiss} />
+                <Delete />
             </Animated.View>
             <PanGestureHandler simultaneousHandlers={simultaneousHandlers} onGestureEvent={panGesture}>
                 <Animated.View style={[styles.container, rStyle]}>

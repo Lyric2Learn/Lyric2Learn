@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity, SafeAreaView, Platform, StatusBar } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Search from '../Images/Svg/search';
@@ -53,7 +53,7 @@ const MainPage = () => {
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
       <KeyboardAwareScrollView>
-        <SafeAreaView>
+        <SafeAreaView style={styles.androidSafeArea}>
           <View style={styles.container}>
             {/* Lyric2Learn adlı Logo  */}
             <View style={styles.logoContainer}>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   backgroundView: {
     alignSelf: 'center',
     backgroundColor: '#ffffff99',
-    height: windowHeight / 1.6,
+    height: windowHeight / 1.5,
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
@@ -117,11 +117,16 @@ const styles = StyleSheet.create({
   backgroundImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    flexBasis: '80%',
+    flexBasis: '72%',
+    margin: 20,
   },
   songCard: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  }
 });

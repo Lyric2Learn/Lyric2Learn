@@ -8,6 +8,7 @@ import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -64,7 +65,6 @@ const ProfilePage = () => {
                 secureText={true}
                 isLowerCase={false}
               />
-
               <CustomTextInput
                 icon={<Password />}
                 placeholder='Yeni Şifre'
