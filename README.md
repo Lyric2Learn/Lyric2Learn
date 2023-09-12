@@ -8,7 +8,7 @@
 
  1. Projeyi klonlamak için   -->   '***git clone https://github.com/Lyric2Learn/Lyric2Learn.git***'
  2.  Gerekli paketleri yüklemek için   -->   '***npm install***'
- 3.  Bu proje expo kullanılarak yapılmıştır. Çalıştırmak için   -->   '***npm run start***'
+ 3.  Bu proje [Expo](https://docs.expo.dev/) kullanılarak yapılmıştır. Çalıştırmak için   -->   '***npm run start***'
 
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
