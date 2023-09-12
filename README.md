@@ -6,25 +6,29 @@
 
 ## PROJEYİ ÇALIŞTIRMAK İÇİN TALİMATLAR
 
- 1. Projeyi klonlamak için   -->   _'git clone https://github.com/Lyric2Learn/Lyric2Learn.git'_
- 2.  Gerekli paketleri yüklemek için   -->   _'npm install'_
- 3.  Bu proje expo ile yapılmıştır. Çalıştırmak için   -->   _'npm run start'_
+ 1. Projeyi klonlamak için   -->   '***git clone https://github.com/Lyric2Learn/Lyric2Learn.git***'
+ 2.  Gerekli paketleri yüklemek için   -->   '***npm install***'
+ 3.  Bu proje expo kullanılarak yapılmıştır. Çalıştırmak için   -->   '***npm run start***'
+
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
 
-* Uygulamayı çalıştırdığınızda giriş yap ekranı sizi karşılayacaktır. Create an Account butonuna tıklayarak e-posta adresiniz ve en az 6 haneli şifrenizle kayıt olabilir, kaydı tamamladıktan sonra giriş yap ekranından uygulamaya giriş yapabilirsiniz.
+* Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Create an Account butonuna tıklayarak e-posta adresiniz ve en az 6 haneli şifrenizle kayıt olabilir, kaydı tamamladıktan sonra log in ekranından uygulamaya giriş yapabilirsiniz.
 
 ![Kayıt Ol Ekranı](https://i.hizliresim.com/37g6uw2.png)
 ![Giriş Yap Ekranı](https://i.hizliresim.com/a2mteqo.png)
 
 ## ANASAYFA
-
 * Giriş yaptığımızda ise bizi Anasayfa karşılar. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
 
 ![Anasayfa](https://i.hizliresim.com/hx6n2zt.png)
 ![Anasayfa](https://i.hizliresim.com/mtp8pfp.png)
 
+## PROJE EKİBİ
+-  [Melek Mahmutoğlu](https://www.linkedin.com/in/melek-mahmuto%C4%9Flu-3050161b0/)
+- [Mehmet Öcal](https://www.linkedin.com/in/mehmetocall/)
+- [Semanur Yabacı](https://www.linkedin.com/in/semanuryabaci/)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
