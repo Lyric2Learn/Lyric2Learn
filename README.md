@@ -1,4 +1,4 @@
-#  ![Anasayfa](https://i.hizliresim.com/s60u8gp.jpg) Lyric2Learn
+#  ![İkon](https://i.hizliresim.com/s60u8gp.jpg) Lyric2Learn
 
 **MOBİLE APPLİCATİON DEVELOPMENT BOOTCAMP BİTİRME PROJESİDİR.**
 
