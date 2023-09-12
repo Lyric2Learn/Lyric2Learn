@@ -6,9 +6,9 @@
 
 ## PROJEYİ ÇALIŞTIRMAK İÇİN TALİMATLAR
 
-**1.** Projeyi klonlamak için   -->   _'git clone https://github.com/Lyric2Learn/Lyric2Learn.git'_
-**2.** Gerekli paketleri yüklemek için   -->   _'npm install'_
-**3.** Bu proje expo ile yapılmıştır. Çalıştırmak için   -->   _'npm run start'_
+ 1. Projeyi klonlamak için   -->   _'git clone https://github.com/Lyric2Learn/Lyric2Learn.git'_
+ 2.  Gerekli paketleri yüklemek için   -->   _'npm install'_
+ 3.  Bu proje expo ile yapılmıştır. Çalıştırmak için   -->   _'npm run start'_
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
 
@@ -18,6 +18,7 @@
 ![Giriş Yap Ekranı](https://i.hizliresim.com/a2mteqo.png)
 
 ## ANASAYFA
+
 * Giriş yaptığımızda ise bizi Anasayfa karşılar. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
 
 ![Anasayfa](https://i.hizliresim.com/hx6n2zt.png)
