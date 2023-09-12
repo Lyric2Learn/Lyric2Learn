@@ -13,13 +13,13 @@
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
 
-* Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Create an Account butonuna tıklayarak e-posta adresiniz ve en az 6 haneli şifrenizle kayıt olabilir, kaydı tamamladıktan sonra log in ekranından uygulamaya giriş yapabilirsiniz.
+Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Create an Account butonuna tıklayarak e-posta adresiniz ve en az 6 haneli şifrenizle kayıt olabilir, kaydı tamamladıktan sonra log in ekranından uygulamaya giriş yapabilirsiniz.
 
 ![Kayıt Ol Ekranı](https://i.hizliresim.com/37g6uw2.png)
 ![Giriş Yap Ekranı](https://i.hizliresim.com/a2mteqo.png)
 
 ## ANASAYFA
-* Giriş yaptığımızda ise bizi Anasayfa karşılar. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
+Giriş yaptığımızda ise bizi Anasayfa karşılar. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
 
 ![Anasayfa](https://i.hizliresim.com/hx6n2zt.png)
 ![Anasayfa](https://i.hizliresim.com/mtp8pfp.png)
@@ -29,6 +29,8 @@
 - [Mehmet Öcal](https://www.linkedin.com/in/mehmetocall/)
 - [Semanur Yabacı](https://www.linkedin.com/in/semanuryabaci/)
 
-## License
+## LİCENSE
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Bu proje, kullanıcıların ve geliştiricilerin projeyi özgürce kullanmasına, değiştirmesine ve dağıtmasına izin veren [MIT](https://choosealicense.com/licenses/mit/) altında lisanslanmıştır. Bu lisans, projenin telif hakkı sahibi tarafından verilen sınırlı bir garantinin yanı sıra, projenin kullanımı ve dağıtımıyla ilgili koşulları açıklar.
+
+MIT Lisansının tam metnini [LICENSE](https://en.wikipedia.org/wiki/MIT_License) dosyasında bulabilirsiniz.
