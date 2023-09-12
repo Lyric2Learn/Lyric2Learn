@@ -1,6 +1,6 @@
-# Lyric2Learn
+#  ![Anasayfa](https://i.hizliresim.com/srspwkb.jpg) Lyric2Learn
 
-**</Code16> MOBİLE APPLİCATİON DEVELOPMENT BOOTCAMP BİTİRME PROJESİDİR.**
+**MOBİLE APPLİCATİON DEVELOPMENT BOOTCAMP BİTİRME PROJESİDİR.**
 
 * Lyric2Learn uygulaması, ingilizce kelimeleri şarkı sözleriyle daha hızlı ve eğlenceli şekilde öğretmeyi amaçlar. Bu uygulamayla birlikte yabancı şarkı arayabilir ve bu şarkının sözlerini görebiliriz. Bu sözlerdeki kelimelere tıklayarak türkçe anlamlarına bakabilir, istersek de o kelimeyi daha sonra bakmak için liste ekranımıza kaydedebiliriz. Bu uygulamayla ingilizce kelimeleri öğrenmek çok kolay!
 
