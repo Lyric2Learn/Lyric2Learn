@@ -19,7 +19,7 @@ Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Cr
 ![Giriş Yap Ekranı](https://i.hizliresim.com/a2mteqo.png)
 
 ## ANASAYFA
-Giriş yaptığımızda ise bizi Anasayfa karşılar. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
+Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
 
 ![Anasayfa](https://i.hizliresim.com/hx6n2zt.png)
 ![Anasayfa](https://i.hizliresim.com/mtp8pfp.png)
