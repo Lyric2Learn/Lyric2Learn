@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, Dimensions, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, Dimensions, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import CustomText from '../Components/CustomText';
@@ -55,7 +55,7 @@ const SignUp = () => {
 
   return (
     <LinearGradient colors={['#9183de', '#a094e3']} style={styles.linear}>
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView style={styles.androidSafeArea} >
         <SafeAreaView>
           <Image source={require('../Images/Sallysecond.png')} style={styles.image} />
           <CustomText header={header} title={title} />
@@ -133,4 +133,8 @@ const styles = StyleSheet.create({
     shadowRadius: 1.0,
     elevation: 2,
   },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  }
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, SafeAreaView, StatusBar, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import CustomText from '../Components/CustomText';
@@ -53,7 +53,7 @@ const LoginPage = () => {
   return (
     <LinearGradient colors={['#e5b2ca', '#cd82de']} style={styles.linear}>
       <KeyboardAwareScrollView>
-        <SafeAreaView>
+        <SafeAreaView style={styles.androidSafeArea}>
           <Image source={require('../Images/Sallyfirst.png')} style={styles.image} />
           <CustomText header={header} title={title} />
           <View style={styles.container}>
@@ -129,4 +129,8 @@ const styles = StyleSheet.create({
     shadowRadius: 3.0,
     elevation: 2,
   },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  }
 });
