@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
