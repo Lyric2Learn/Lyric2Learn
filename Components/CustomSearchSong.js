@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   textStyleArtist: {
-    color: '#E5B2CA',
+    color: '#e79ec0',
     fontSize: 18,
     fontWeight: '700',
     letterSpacing: 0.7,
     marginBottom: 5,
   },
   textStyleTitle: {
-    color: '#E5B2CA',
+    color: '#e79ec0',
     fontSize: 15,
     fontWeight: '400',
     letterSpacing: 0.7,

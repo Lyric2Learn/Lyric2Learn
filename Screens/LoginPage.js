@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, SafeAreaView, StatusBar, Platform } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, SafeAreaView, StatusBar, Platform, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import CustomText from '../Components/CustomText';
@@ -11,6 +11,9 @@ import { signIn } from '../authentication/authService';
 import { useFormik } from 'formik';
 import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
+
+const windowWidth = Dimensions.get('window').width;
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Geçerli bir e-posta girin').required('E-posta zorunlu'),
@@ -65,6 +68,7 @@ const LoginPage = () => {
               value={formik.values.email}
               secureText={false}
               isLowerCase={true}
+              profileStyle={windowWidth / 1.1}
             />
             {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
             <CustomTextInput
@@ -75,6 +79,7 @@ const LoginPage = () => {
               value={formik.values.password}
               secureText={true}
               isLowerCase={false}
+              profileStyle={windowWidth / 1.1}
             />
             {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
           </View>
@@ -132,5 +137,5 @@ const styles = StyleSheet.create({
   androidSafeArea: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+  },
 });

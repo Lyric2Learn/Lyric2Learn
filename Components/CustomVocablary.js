@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '500',
         letterSpacing: 0.7,
-        color: '#E5B2CA',
+        color: '#e79ec0',
     },
     iconContainer: {
         height: heightContainer / 1.5,

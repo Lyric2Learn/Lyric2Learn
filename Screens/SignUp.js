@@ -18,8 +18,8 @@ const windowHeight = Dimensions.get('window').height;
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
-  const header = 'Welcome Back';
-  const title = 'Please, Log in.';
+  const header = 'Hi There!';
+  const title = 'Let\'s Get Started!';
   const continueName = 'Continue >';
   const createAccount = 'Log In';
 
@@ -68,6 +68,7 @@ const SignUp = () => {
               value={formik.values.email}
               secureText={false}
               isLowerCase={true}
+              profileStyle={windowWidth / 1.1}
             />
             {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
             <CustomTextInput
@@ -78,6 +79,7 @@ const SignUp = () => {
               value={formik.values.password}
               secureText={true}
               isLowerCase={false}
+              profileStyle={windowWidth / 1.1}
             />
             {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
           </View>

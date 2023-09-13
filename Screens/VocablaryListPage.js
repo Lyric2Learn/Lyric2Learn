@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   backgroundView: {
     alignSelf: 'center',
     backgroundColor: '#ffffff99',
-    height: Platform === 'android' ? windowHeight / 1.6 : windowHeight / 1.36,
+    height: Platform.OS === 'android' ? windowHeight / 1.23 : windowHeight / 1.36,
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,

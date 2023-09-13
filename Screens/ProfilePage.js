@@ -49,7 +49,7 @@ const ProfilePage = () => {
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.androidSafeArea}>
         <View style={styles.container}>
           <View style={styles.logoContainer}>
             <Image source={require('../Images/Lyric2LearnLogo.png')} />
@@ -63,6 +63,7 @@ const ProfilePage = () => {
                 value={oldPassword}
                 secureText={true}
                 isLowerCase={false}
+                profileStyle={windowWidth / 1.25}
               />
 
               <CustomTextInput
@@ -72,6 +73,7 @@ const ProfilePage = () => {
                 value={newPassword}
                 secureText={true}
                 isLowerCase={false}
+                profileStyle={windowWidth / 1.25}
               />
               <CustomTextInput
                 icon={<Password />}
@@ -80,6 +82,7 @@ const ProfilePage = () => {
                 value={confirmNewPassword}
                 secureText={true}
                 isLowerCase={false}
+                profileStyle={windowWidth / 1.25}
               />
               {error && <Text style={styles.error}>{error}</Text>}
               <CustomButton
@@ -121,6 +124,21 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
     marginBottom: -30,
+  },
+  buttonShadow: {
+    shadowColor: '##dcdcdc40',
+    shadowOpacity: 0.2,
+    shadowRadius: 3.85,
+    elevation: 2,
+    shadowOffset: { width: 3, height: 3 },
+    width: windowWidth / 2.2
+  },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  },
+  insideStyle: {
+    marginTop: 60,
   },
 
 
