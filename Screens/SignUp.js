@@ -18,8 +18,8 @@ const windowHeight = Dimensions.get('window').height;
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
-  const header = 'Hi There!';
-  const title = "Let's Get Started!";
+  const header = 'Welcome Back';
+  const title = 'Please, Log in.';
   const continueName = 'Continue >';
   const createAccount = 'Log In';
 
@@ -135,6 +135,6 @@ const styles = StyleSheet.create({
   },
   androidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-  },
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  }
 });

@@ -16,7 +16,7 @@ const WelcomePage = () => {
         const user = await getCurrentUser();
         if (user) {
           // Oturum açık bir kullanıcı varsa, Tabs sayfasına yönlendir
-          navigation.navigate('Login');
+          navigation.navigate('Tabs');
         }
       } catch (error) {
         console.error('Oturum açık kullanıcı kontrol hatası:', error.message);
