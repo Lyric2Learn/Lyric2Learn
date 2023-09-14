@@ -60,7 +60,9 @@ const CustomVocablary = ({ item, simultaneousHandlers }) => {
             opacity: opacity.value,
         }
     })
+    console.log({ item });
     return (
+
         <Animated.View style={[styles.mainContainer, rContainerStyle]}>
             <Animated.View style={[styles.iconContainer, rIconStyle]}>
                 <Delete />
