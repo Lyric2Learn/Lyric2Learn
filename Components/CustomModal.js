@@ -4,12 +4,12 @@ import Unsave from '../Images/Svg/unsave';
 import Save from '../Images/Svg/save';
 import useVocabularyStore from '../Store/useStore';
 
-const CustomHalfModal = ({ visible, onClose, translation, word, save, selectedWordInfo }) => {
+const CustomHalfModal = ({ visible, onClose, word, save, }) => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);
 
+  console.log({ word, vocabulary });
   const toggleSave = () => {
     save()
-    console.log(vocabulary);
   };
 
 
@@ -26,10 +26,10 @@ const CustomHalfModal = ({ visible, onClose, translation, word, save, selectedWo
         <View style={styles.modalContent}>
           <View style={styles.saveContainer}>
             <View style={styles.textContainer}>
-              <Text style={styles.selectedWord}>{word}</Text>
-              <Text style={styles.translationText}>{translation}</Text>
+              <Text style={styles.selectedWord}>{word.en}</Text>
+              <Text style={styles.translationText}>{word.tr}</Text>
             </View>
-            <TouchableOpacity onPress={toggleSave}>{vocabulary.some(item => item.id === selectedWordInfo.id) ? <Save /> : <Unsave />}</TouchableOpacity>
+            <TouchableOpacity onPress={toggleSave}>{vocabulary.some(item => item.id === word.id) ? <Save /> : <Unsave />}</TouchableOpacity>
           </View>
           <TouchableOpacity onPress={() => onClose()} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   translationText: {
     fontSize: 18,
     marginBottom: 20,
+    textTransform: 'capitalize',
   },
   closeButton: {
     alignItems: 'center',
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   selectedWord: {
+    textTransform: 'capitalize',
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,

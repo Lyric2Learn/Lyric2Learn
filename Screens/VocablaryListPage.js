@@ -12,7 +12,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const VocablaryListPage = () => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);
-
+  console.log(vocabulary);
   const scrollRef = useRef(null);
 
 

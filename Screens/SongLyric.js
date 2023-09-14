@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Back from '../Images/Svg/back';
@@ -15,14 +15,16 @@ const SongLyric = ({ route }) => {
   const [selectedWordInfo, setSelectedWordInfo] = useState({ en: "", tr: "", id: -1 });
   const [translation, setTranslation] = useState('');
   const [visible, setVisible] = useState(false);
+  const [wordList, setWordList] = useState([]);
 
   const addVocabulary = useVocabularyStore((state) => state.addVocabulary);
 
   const handleWordClick = (wordInfo) => {
-    const _translation = song.translations.find(item => item.id === wordInfo.id);
+    console.log(wordInfo);
+    const _translation = song.translations.find(item => item.en === wordInfo);
+    console.log({ _translation });
     if (_translation) {
-      setSelectedWordInfo(wordInfo);
-      setTranslation(_translation.tr);
+      setSelectedWordInfo(_translation);
       setVisible(true);
     }
   };
@@ -32,6 +34,34 @@ const SongLyric = ({ route }) => {
     setSelectedWordInfo({ en: "", tr: "", id: -1 });
     setTranslation('');
   };
+
+
+  const groupWord = (value) => {
+    const list = [];
+    let words = [];
+    value.split(' ').forEach(word => {
+      const regex = /^[A-Z]/;
+
+      if (regex.test(word)) {
+        if (words.length === 1 && word === 'I') {
+          words.push(word);
+        } else {
+          words.length > 0 && list.push(words);
+          words = [word];
+        }
+      } else {
+        words.push(word);
+      }
+
+    })
+    setWordList(list);
+  }
+
+  const control = (word) => {
+    return song.translations.some(item => item.en === word);
+  }
+
+  useEffect(() => { groupWord(song.lyrics) }, [song.lyrics])
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
@@ -54,21 +84,16 @@ const SongLyric = ({ route }) => {
           </View>
           <ScrollView>
             <View style={styles.lyricsContainer}>
-              {song.lyrics.split(' ').map((word, index) => {
-                const wordInfo = song.translations.find(item => item.en === word);
-                const canBeTranslate = song.translations.some(item => item.en === word);
-
-                return (
-                  canBeTranslate ?
-                    <Text key={index} onPress={() => handleWordClick(wordInfo)} style={styles.clickableWord}>
-                      {word}
-                    </Text>
-                    :
-                    <Text key={index} style={styles.lyrics}>
-                      {word}
-                    </Text>
-                );
-              })}
+              {wordList.map((item, index) =>
+                <View key={index} style={styles.wordContainer}>
+                  {item.map((x, i) =>
+                    <Text key={i}
+                      style={control(x) ? styles.clickableWord : styles.lyrics}
+                      onPress={() => handleWordClick(x)}
+                    >{x} </Text>
+                  )}
+                </View>
+              )}
             </View>
           </ScrollView>
         </View>
@@ -76,10 +101,8 @@ const SongLyric = ({ route }) => {
       <CustomModal
         visible={visible}
         onClose={closeModal}
-        translation={translation.charAt(0).toUpperCase() + translation.slice(1)}
-        word={selectedWordInfo.en.charAt(0).toUpperCase() + selectedWordInfo.en.slice(1)}
+        word={selectedWordInfo}
         save={() => addVocabulary(selectedWordInfo)}
-        selectedWordInfo={selectedWordInfo}
       />
     </LinearGradient>
   );
@@ -154,13 +177,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 3,
     fontSize: 18,
-    padding: 3,
     letterSpacing: 0.7,
 
   },
   lyricsContainer: {
-    flexDirection: 'row',
+
     flexWrap: 'wrap',
     alignItems: 'flex-start',
   },
+  wordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  }
 });
