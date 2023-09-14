@@ -57,7 +57,7 @@ const ProfilePage = () => {
           <View style={styles.backgroundView}>
             <View style={styles.insideStyle}>
               <View>
-                <Image style={styles.picProfile} source={require('../Images/Profile.png')} />
+                <Image style={styles.picProfile} source={require('../Images/Profile1.png')} />
               </View>
               <CustomTextInput
                 icon={<Password />}
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 50,
     alignSelf: 'center',
-    marginBottom: -10,
+    marginBottom: -8.8
   }
 
 
