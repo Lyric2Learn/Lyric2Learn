@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity, SafeAreaView, StatusBar, Platform } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Search from '../Images/Svg/search';
@@ -8,8 +8,9 @@ import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../authentication/firebaseConfig';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-
+const { width, height } = Dimensions.get('window');
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -63,11 +64,14 @@ const MainPage = () => {
             <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
           </View>
           {/* Şarkı araması yapılmadan önce gözükecek resim */}
-          <View style={styles.backgroundView}>
-            {isVisible ? (
+          {isVisible ? (
+            <View style={styles.backgroundView}>
               <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
-            ) : (
+            </View>
+          ) : (
+            <>
               <FlatList
+                style={styles.backgroundView}
                 scrollEnabled={true}
                 data={filteredList}
                 keyExtractor={(item) => item.id}
@@ -77,8 +81,8 @@ const MainPage = () => {
                   </TouchableOpacity>
                 )}
               />
-            )}
-          </View>
+            </>
+          )}
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -93,7 +97,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logoContainer: {
     alignSelf: 'center',
@@ -101,22 +106,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   inputContainer: {
-    flexShrink: 0,
-    flexBasis: '10%',
-    marginBottom: 20,
+    height: 100,
   },
   backgroundView: {
-    alignSelf: 'center',
     backgroundColor: '#ffffff99',
-    height: Platform.OS === 'android' ? windowHeight / 1.5 : windowHeight / 1.6,
-    width: windowWidth / 1.1,
-    margin: 8,
+    width: width - 32,
+    margin: 16,
     borderRadius: 10,
+    flex: 1,
+    height: 100,
+    alignItems: 'center',
   },
   backgroundImage: {
     resizeMode: 'contain',
-    alignSelf: 'center',
-    flexBasis: '80%',
+    width: width - 16,
   },
   songCard: {
     padding: 10,
@@ -125,6 +128,5 @@ const styles = StyleSheet.create({
   },
   androidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+  },
 });
