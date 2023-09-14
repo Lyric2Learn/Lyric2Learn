@@ -35,6 +35,7 @@ const BottomTabNavigator = () => {
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30,
           },
+          tabBarHideOnKeyboard: true,
         }}
       >
         <Tab.Screen

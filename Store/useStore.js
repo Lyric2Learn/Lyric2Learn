@@ -4,16 +4,23 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 const useVocabularyStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       vocabulary: [],
       addVocabulary: (word) =>
         set((state) => ({
           vocabulary: state.vocabulary.some(item => item.id === word.id) ? state.vocabulary.filter(item => item.id !== word.id) : [...state.vocabulary, word],
         })),
-      deleteVocabulary: (wordId) => {
-        set((state) => ({
-          vocabulary: state.vocabulary.filter(item => item.id !== wordId)
-        }));
+      deleteVocabulary: async (wordId) => {
+        // Kelimeyi kaldırın ve AsyncStorage'den kaldırın
+        try {
+          const currentVocabulary = useVocabularyStore.getState().vocabulary;
+          const updatedVocabulary = currentVocabulary.filter((item) => item.id !== wordId);
+          useVocabularyStore.setState({ vocabulary: updatedVocabulary });
+
+          await AsyncStorage.setItem('vocabulary', JSON.stringify(updatedVocabulary));
+        } catch (error) {
+          console.error('Kelime silme hatası:', error);
+        }
       },
       initialize: async () => {
         try {
@@ -35,3 +42,4 @@ const useVocabularyStore = create(
 );
 
 export default useVocabularyStore;
+

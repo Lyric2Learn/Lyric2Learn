@@ -57,7 +57,6 @@ const SongLyric = ({ route }) => {
               {song.lyrics.split(' ').map((word, index) => {
                 const wordInfo = song.translations.find(item => item.en === word);
                 const canBeTranslate = song.translations.some(item => item.en === word);
-                const isFirstLetterCapitalized = /^[A-Z]/.test(word);
 
                 return (
                   canBeTranslate ?
@@ -132,13 +131,13 @@ const styles = StyleSheet.create({
     height: windowHeight / 8,
   },
   artist: {
-    color: '#E5B2CA',
+    color: '#e79ec0',
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
   },
   songTitle: {
-    color: '#E5B2CA',
+    color: '#e79ec0',
     fontSize: 16,
     marginBottom: 10,
   },
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
 
   },
   clickableWord: {
-    color: '#E5B2CA',
+    color: '#e79ec0',
     fontWeight: 'bold',
     padding: 3,
     fontSize: 18,

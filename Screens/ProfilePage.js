@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform, } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
@@ -49,13 +49,16 @@ const ProfilePage = () => {
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.androidSafeArea}>
         <View style={styles.container}>
           <View style={styles.logoContainer}>
             <Image source={require('../Images/Lyric2LearnLogo.png')} />
           </View>
           <View style={styles.backgroundView}>
             <View style={styles.insideStyle}>
+              <View>
+                <Image style={styles.picProfile} source={require('../Images/Profile1.png')} />
+              </View>
               <CustomTextInput
                 icon={<Password />}
                 placeholder='Mevcut Şifre'
@@ -63,8 +66,9 @@ const ProfilePage = () => {
                 value={oldPassword}
                 secureText={true}
                 isLowerCase={false}
+                profileStyle={windowWidth / 1.25}
+                inputheight={windowHeight / 17}
               />
-
               <CustomTextInput
                 icon={<Password />}
                 placeholder='Yeni Şifre'
@@ -72,6 +76,8 @@ const ProfilePage = () => {
                 value={newPassword}
                 secureText={true}
                 isLowerCase={false}
+                profileStyle={windowWidth / 1.25}
+                inputheight={windowHeight / 17}
               />
               <CustomTextInput
                 icon={<Password />}
@@ -80,6 +86,8 @@ const ProfilePage = () => {
                 value={confirmNewPassword}
                 secureText={true}
                 isLowerCase={false}
+                profileStyle={windowWidth / 1.25}
+                inputheight={windowHeight / 17}
               />
               {error && <Text style={styles.error}>{error}</Text>}
               <CustomButton
@@ -122,6 +130,30 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: -30,
   },
+  buttonShadow: {
+    shadowColor: '##dcdcdc40',
+    shadowOpacity: 0.2,
+    shadowRadius: 3.85,
+    elevation: 2,
+    shadowOffset: { width: 3, height: 3 },
+    width: windowWidth / 2.1,
+    height: windowHeight / 16,
+
+  },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  },
+  insideStyle: {
+    marginTop: 20,
+  },
+  picProfile: {
+    height: 250,
+    width: 250,
+    borderRadius: 50,
+    alignSelf: 'center',
+    marginBottom: -8.8
+  }
 
 
 });

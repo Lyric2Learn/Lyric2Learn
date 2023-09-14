@@ -1,22 +1,22 @@
 import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import React from 'react'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
+import Animated, { runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
 import Delete from '../Images/Svg/delete'
+import useVocabularyStore from '../Store/useStore'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const heightContainer = 70;
 const windowWidth = Dimensions.get('window').width;
 const translationXThresHold = -windowWidth * 0.12;
 
-const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
+const CustomVocablary = ({ item, simultaneousHandlers }) => {
     const translationX = useSharedValue(0);
     const itemHeight = useSharedValue(heightContainer);
     const marginVertical = useSharedValue(10);
     const opacity = useSharedValue(1);
+    const deleteVocabulary = useVocabularyStore((state) => state.deleteVocabulary)
 
-    const handleDismiss = () => {
-        dismiss(item.id);
-    }
 
     const panGesture = useAnimatedGestureHandler({
         onActive: (event) => {
@@ -28,11 +28,14 @@ const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
                 translationX.value = withTiming(-windowWidth);
                 itemHeight.value = withTiming(0);
                 marginVertical.value = withTiming(0);
-                opacity.value = withTiming(0), undefined, (isFinished) => {
-                    if (isFinished) {
-                        handleDismiss();
+                opacity.value = withTiming(0, undefined,
+                    (isFinished) => {
+                        if (isFinished) {
+                            runOnJS(deleteVocabulary)(item.id);
+                        }
                     }
-                };
+                );
+
             } else {
                 translationX.value = withTiming(0);
             }
@@ -60,11 +63,11 @@ const CustomVocablary = ({ item, dismiss, simultaneousHandlers }) => {
     return (
         <Animated.View style={[styles.mainContainer, rContainerStyle]}>
             <Animated.View style={[styles.iconContainer, rIconStyle]}>
-                <Delete dismiss={handleDismiss} />
+                <Delete />
             </Animated.View>
             <PanGestureHandler simultaneousHandlers={simultaneousHandlers} onGestureEvent={panGesture}>
                 <Animated.View style={[styles.container, rStyle]}>
-                    <Text key={item.id} style={styles.word}>
+                    <Text key={console.log(item.id)} style={styles.word}>
                         {item.en} : {item.tr}
                     </Text>
                 </Animated.View>
@@ -108,7 +111,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '500',
         letterSpacing: 0.7,
-        color: '#E5B2CA',
+        color: '#e79ec0',
     },
     iconContainer: {
         height: heightContainer / 1.5,
@@ -121,3 +124,4 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     }
 })
+

@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, FlatList, TouchableOpacity, SafeAreaView, StatusBar, Platform } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Search from '../Images/Svg/search';
@@ -52,37 +52,35 @@ const MainPage = () => {
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <KeyboardAwareScrollView>
-        <SafeAreaView>
-          <View style={styles.container}>
-            {/* Lyric2Learn adlı Logo  */}
-            <View style={styles.logoContainer}>
-              <Image source={require('../Images/Lyric2LearnLogo.png')} />
-            </View>
-            {/* Search Alanı */}
-            <View style={styles.inputContainer}>
-              <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
-            </View>
-            {/* Şarkı araması yapılmadan önce gözükecek resim */}
-            <View style={styles.backgroundView}>
-              {isVisible ? (
-                <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
-              ) : (
-                <FlatList
-                  scrollEnabled={false}
-                  data={filteredList}
-                  keyExtractor={(item) => item.id}
-                  renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
-                      <CustomSearchSong song={item} />
-                    </TouchableOpacity>
-                  )}
-                />
-              )}
-            </View>
+      <SafeAreaView style={styles.androidSafeArea}>
+        <View style={styles.container}>
+          {/* Lyric2Learn adlı Logo  */}
+          <View style={styles.logoContainer}>
+            <Image source={require('../Images/Lyric2LearnLogo.png')} />
           </View>
-        </SafeAreaView>
-      </KeyboardAwareScrollView>
+          {/* Search Alanı */}
+          <View style={styles.inputContainer}>
+            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
+          </View>
+          {/* Şarkı araması yapılmadan önce gözükecek resim */}
+          <View style={styles.backgroundView}>
+            {isVisible ? (
+              <Image source={require('../Images/SearchBefore.png')} style={styles.backgroundImage} />
+            ) : (
+              <FlatList
+                scrollEnabled={true}
+                data={filteredList}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => navigation.navigate('SongLyric', { song: item })}>
+                    <CustomSearchSong song={item} />
+                  </TouchableOpacity>
+                )}
+              />
+            )}
+          </View>
+        </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -105,11 +103,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexShrink: 0,
     flexBasis: '10%',
+    marginBottom: 20,
   },
   backgroundView: {
     alignSelf: 'center',
     backgroundColor: '#ffffff99',
-    height: windowHeight / 1.6,
+    height: Platform.OS === 'android' ? windowHeight / 1.5 : windowHeight / 1.6,
     width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
@@ -124,4 +123,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  }
 });

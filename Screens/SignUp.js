@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, Dimensions, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, Dimensions, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import CustomText from '../Components/CustomText';
@@ -18,8 +18,8 @@ const windowHeight = Dimensions.get('window').height;
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
-  const header = 'Welcome Back';
-  const title = 'Please, Log in.';
+  const header = 'Hi There!';
+  const title = 'Let\'s Get Started!';
   const continueName = 'Continue >';
   const createAccount = 'Log In';
 
@@ -55,7 +55,7 @@ const SignUp = () => {
 
   return (
     <LinearGradient colors={['#9183de', '#a094e3']} style={styles.linear}>
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView style={styles.androidSafeArea} >
         <SafeAreaView>
           <Image source={require('../Images/Sallysecond.png')} style={styles.image} />
           <CustomText header={header} title={title} />
@@ -68,6 +68,7 @@ const SignUp = () => {
               value={formik.values.email}
               secureText={false}
               isLowerCase={true}
+              profileStyle={windowWidth / 1.1}
             />
             {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
             <CustomTextInput
@@ -78,6 +79,7 @@ const SignUp = () => {
               value={formik.values.password}
               secureText={true}
               isLowerCase={false}
+              profileStyle={windowWidth / 1.1}
             />
             {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
           </View>
@@ -133,4 +135,8 @@ const styles = StyleSheet.create({
     shadowRadius: 1.0,
     elevation: 2,
   },
+  androidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  }
 });
