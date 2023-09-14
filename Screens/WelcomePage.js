@@ -5,6 +5,9 @@ import CustomButton from '../Components/CustomButton';
 import { getCurrentUser } from '../authentication/authService';
 import { useNavigation } from '@react-navigation/native';
 
+
+const { width } = Dimensions.get('window');
+
 const WelcomePage = () => {
   const letsGetStarted = 'Hadi Başlayalım...';
   const navigation = useNavigation();
@@ -40,7 +43,9 @@ const WelcomePage = () => {
           <Image source={require('../Images/SplashSally.png')} style={styles.splashSally} />
           <Image source={require('../Images/WelcomePageDrop.png')} style={styles.drop} />
         </View>
-        <CustomButton buttonColor={'#ffffff47'} buttonName={letsGetStarted} titleColor={'#FFF'} buttonShadow={styles.buttonShadow} onPress={gotoLogin} />
+        <View style={styles.buttonContainer}>
+          <CustomButton buttonColor={'#ffffff47'} buttonName={letsGetStarted} titleColor={'#FFF'} buttonShadow={styles.buttonShadow} onPress={gotoLogin} />
+        </View>
       </View>
     </LinearGradient>
   );
@@ -68,13 +73,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   splashSally: {
-    flexBasis: '35%',
     resizeMode: 'contain',
     alignSelf: 'center',
     marginTop: -90,
+    width: width - 20
+
   },
   drop: {
-    marginTop: -30,
+    width: width - 100,
+    marginTop: - 40,
     alignSelf: 'center',
   },
   buttonShadow: {
@@ -83,4 +90,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  buttonContainer: {
+    alignItems: 'center'
+  }
 });

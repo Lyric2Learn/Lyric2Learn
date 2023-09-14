@@ -5,6 +5,7 @@ import Back from '../Images/Svg/back';
 import { useNavigation } from '@react-navigation/native';
 import CustomModal from '../Components/CustomModal';
 import useVocabularyStore from '../Store/useStore';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -13,16 +14,13 @@ const SongLyric = ({ route }) => {
   const navigation = useNavigation();
   const { song } = route.params;
   const [selectedWordInfo, setSelectedWordInfo] = useState({ en: "", tr: "", id: -1 });
-  const [translation, setTranslation] = useState('');
   const [visible, setVisible] = useState(false);
   const [wordList, setWordList] = useState([]);
 
   const addVocabulary = useVocabularyStore((state) => state.addVocabulary);
 
   const handleWordClick = (wordInfo) => {
-    console.log(wordInfo);
     const _translation = song.translations.find(item => item.en === wordInfo);
-    console.log({ _translation });
     if (_translation) {
       setSelectedWordInfo(_translation);
       setVisible(true);
@@ -32,7 +30,6 @@ const SongLyric = ({ route }) => {
   const closeModal = () => {
     setVisible(false);
     setSelectedWordInfo({ en: "", tr: "", id: -1 });
-    setTranslation('');
   };
 
 
@@ -65,45 +62,49 @@ const SongLyric = ({ route }) => {
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.navigate('Anasayfa')}>
-            <Back />
-          </TouchableOpacity>
-          <View style={styles.logoContainer}>
-            <Image source={require('../Images/Lyric2LearnLogo.png')} />
-          </View>
-        </View>
-        <View style={styles.backgroundImage}>
-          <View style={styles.coverContainer}>
-            <Image source={{ uri: song.imageURL }} style={styles.songImage} />
-            <View style={styles.textContainer}>
-              <Text style={styles.artist}>{song.artist}</Text>
-              <Text style={styles.songTitle}>{song.songTitle}</Text>
+      <SafeAreaView style={styles.androidSafeArea}>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <View style={styles.backStyle}>
+              <TouchableOpacity onPress={() => navigation.navigate('Anasayfa')}>
+                <Back />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.logoContainer}>
+              <Image source={require('../Images/Lyric2LearnLogo.png')} />
             </View>
           </View>
-          <ScrollView>
-            <View style={styles.lyricsContainer}>
-              {wordList.map((item, index) =>
-                <View key={index} style={styles.wordContainer}>
-                  {item.map((x, i) =>
-                    <Text key={i}
-                      style={control(x) ? styles.clickableWord : styles.lyrics}
-                      onPress={() => handleWordClick(x)}
-                    >{x} </Text>
-                  )}
-                </View>
-              )}
+          <View style={styles.backgroundImage}>
+            <View style={styles.coverContainer}>
+              <Image source={{ uri: song.imageURL }} style={styles.songImage} />
+              <View style={styles.textContainer}>
+                <Text style={styles.artist}>{song.artist}</Text>
+                <Text style={styles.songTitle}>{song.songTitle}</Text>
+              </View>
             </View>
-          </ScrollView>
+            <ScrollView>
+              <View>
+                {wordList.map((item, index) =>
+                  <View key={index} style={styles.wordContainer}>
+                    {item.map((wordMap, indexKey) =>
+                      <Text key={indexKey}
+                        style={control(wordMap) ? styles.clickableWord : styles.lyrics}
+                        onPress={() => handleWordClick(wordMap)}
+                      >{wordMap} </Text>
+                    )}
+                  </View>
+                )}
+              </View>
+            </ScrollView>
+          </View>
         </View>
-      </View>
-      <CustomModal
-        visible={visible}
-        onClose={closeModal}
-        word={selectedWordInfo}
-        save={() => addVocabulary(selectedWordInfo)}
-      />
+        <CustomModal
+          visible={visible}
+          onClose={closeModal}
+          word={selectedWordInfo}
+          save={() => addVocabulary(selectedWordInfo)}
+        />
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -116,28 +117,33 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 40,
   },
   logoContainer: {
-    alignSelf: 'center',
-    marginLeft: 30,
-    marginTop: 20,
-    marginBottom: -10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 20,
+    marginBottom: 30,
   },
   backgroundImage: {
+    flex: 1,
+    backgroundColor: 'red',
     alignSelf: 'center',
+    width: windowWidth - 32,
     backgroundColor: '#ffffff99',
-    height: windowHeight / 1.4,
-    width: windowWidth / 1.1,
     margin: 8,
     borderRadius: 10,
+    marginTop: -20,
   },
   coverContainer: {
     flexDirection: 'row',
@@ -150,8 +156,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   songImage: {
-    width: windowWidth / 4,
-    height: windowHeight / 8,
+    width: 100,
+    height: 100,
   },
   artist: {
     color: '#e79ec0',
@@ -168,7 +174,7 @@ const styles = StyleSheet.create({
     color: '#E5B2CA',
     fontSize: 18,
     fontWeight: '400',
-    letterSpacing: 0.7,
+    letterSpacing: 0.3,
     padding: 3,
 
   },
@@ -177,17 +183,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 3,
     fontSize: 18,
-    letterSpacing: 0.7,
+    letterSpacing: 0.5,
 
-  },
-  lyricsContainer: {
-
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
   },
   wordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'wrap',
-  }
+  },
+  androidSafeArea: {
+    flex: 1,
+  },
 });

@@ -1,10 +1,10 @@
-import { StyleSheet, View, Image, Dimensions, SafeAreaView, Platform, StatusBar } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, } from 'react-native';
 import React, { useRef, useState, } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import useVocabularyStore from '../Store/useStore';
 import CustomVocablary from '../Components/CustomVocablary';
 import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -25,7 +25,7 @@ const VocablaryListPage = () => {
           </View>
           <View style={styles.backgroundView}>
             <GestureHandlerRootView>
-              <ScrollView ref={scrollRef} style={{ height: Platform.OS === 'android' ? windowHeight / 1.23 : windowHeight / 1.36, }}>
+              <ScrollView ref={scrollRef}>
                 {vocabulary.map((item) => (
                   <CustomVocablary item={item} key={item.id}
                     simultaneousHandlers={scrollRef} />
@@ -46,24 +46,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    justifyContent: 'space-evenly',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logoContainer: {
     alignSelf: 'center',
-    marginTop: 10,
-    marginBottom: -30,
   },
   backgroundView: {
-    alignSelf: 'center',
+    flex: 1,
     backgroundColor: '#ffffff99',
-    height: Platform.OS === 'android' ? windowHeight / 1.23 : windowHeight / 1.36,
-    width: windowWidth / 1.1,
-    margin: 8,
+    width: windowWidth - 32,
+    margin: 16,
     borderRadius: 10,
+    marginTop: -20,
   },
   androidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
-
+  },
 });

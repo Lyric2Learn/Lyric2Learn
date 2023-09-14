@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, isLowerCase, profileStyle, inputheight }) => {
+const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, isLowerCase, widthStyle, heightStyle }) => {
   const [text, setText] = useState(value);
 
   const handleTextInput = (inputText) => {
@@ -20,7 +20,7 @@ const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, i
   };
 
   return (
-    <View style={[styles.textinput, { width: profileStyle, height: inputheight },]}>
+    <View style={[styles.textinput, { width: widthStyle, height: heightStyle }]}>
       {icon && <View style={styles.iconContainer}>{icon}</View>}
       <TextInput value={text} onChangeText={handleTextInput} style={styles.inputTextName} placeholder={placeholder} secureTextEntry={secureText} />
     </View>
@@ -32,17 +32,16 @@ export default CustomTextInput;
 const styles = StyleSheet.create({
   textinput: {
     alignContent: 'center',
-    alignSelf: 'center',
     flexDirection: 'row',
     marginHorizontal: 20,
-    marginVertical: 10,
     backgroundColor: '#FFF',
     borderRadius: 50,
-    height: windowHeight / 11,
-    width: windowWidth / 1.1,
+    width: windowWidth - 56,
     padding: 20,
     borderColor: '#ccc',
     borderWidth: 0.6,
+    height: 80,
+    marginBottom: 10,
   },
   inputTextName: {
     flex: 1,

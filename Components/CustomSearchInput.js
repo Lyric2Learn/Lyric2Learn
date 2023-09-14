@@ -3,11 +3,10 @@ import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
-const CustomSearchInput = ({ icon, value, onChangeText, placeholder }) => {
+const CustomSearchInput = ({ icon, value, onChangeText, placeholder, scrollView }) => {
   return (
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView scrollEnabled={scrollView}>
       <View style={styles.textinput}>
         {icon && <View style={styles.iconContainer}>{icon}</View>}
         <TextInput value={value} onChangeText={onChangeText} style={styles.inputTextName} placeholder={placeholder} />
