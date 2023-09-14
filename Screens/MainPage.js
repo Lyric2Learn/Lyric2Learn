@@ -71,7 +71,7 @@ const MainPage = () => {
           ) : (
             <>
               <FlatList
-                style={styles.backgroundView}
+                style={styles.flatlist}
                 scrollEnabled={true}
                 data={filteredList}
                 keyExtractor={(item) => item.id}
@@ -116,6 +116,14 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 100,
     alignItems: 'center',
+  },
+  flatlist: {
+    backgroundColor: '#ffffff99',
+    width: width - 32,
+    margin: 16,
+    borderRadius: 10,
+    flex: 1,
+    height: 100,
   },
   backgroundImage: {
     resizeMode: 'contain',
