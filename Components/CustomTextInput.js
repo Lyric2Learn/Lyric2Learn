@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, isLowerCase, profileStyle }) => {
+const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, isLowerCase, profileStyle, inputheight }) => {
   const [text, setText] = useState(value);
 
   const handleTextInput = (inputText) => {
@@ -20,7 +20,7 @@ const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, i
   };
 
   return (
-    <View style={[styles.textinput, { width: profileStyle }]}>
+    <View style={[styles.textinput, { width: profileStyle, height: inputheight },]}>
       {icon && <View style={styles.iconContainer}>{icon}</View>}
       <TextInput value={text} onChangeText={handleTextInput} style={styles.inputTextName} placeholder={placeholder} secureTextEntry={secureText} />
     </View>

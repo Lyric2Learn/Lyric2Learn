@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform, } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
@@ -56,6 +56,9 @@ const ProfilePage = () => {
           </View>
           <View style={styles.backgroundView}>
             <View style={styles.insideStyle}>
+              <View>
+                <Image style={styles.picProfile} source={require('../Images/Profile.png')} />
+              </View>
               <CustomTextInput
                 icon={<Password />}
                 placeholder='Mevcut Şifre'
@@ -64,8 +67,8 @@ const ProfilePage = () => {
                 secureText={true}
                 isLowerCase={false}
                 profileStyle={windowWidth / 1.25}
+                inputheight={windowHeight / 17}
               />
-
               <CustomTextInput
                 icon={<Password />}
                 placeholder='Yeni Şifre'
@@ -74,6 +77,7 @@ const ProfilePage = () => {
                 secureText={true}
                 isLowerCase={false}
                 profileStyle={windowWidth / 1.25}
+                inputheight={windowHeight / 17}
               />
               <CustomTextInput
                 icon={<Password />}
@@ -83,6 +87,7 @@ const ProfilePage = () => {
                 secureText={true}
                 isLowerCase={false}
                 profileStyle={windowWidth / 1.25}
+                inputheight={windowHeight / 17}
               />
               {error && <Text style={styles.error}>{error}</Text>}
               <CustomButton
@@ -131,15 +136,24 @@ const styles = StyleSheet.create({
     shadowRadius: 3.85,
     elevation: 2,
     shadowOffset: { width: 3, height: 3 },
-    width: windowWidth / 2.2
+    width: windowWidth / 2.1,
+    height: windowHeight / 16,
+
   },
   androidSafeArea: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
   insideStyle: {
-    marginTop: 60,
+    marginTop: 20,
   },
+  picProfile: {
+    height: 250,
+    width: 250,
+    borderRadius: 50,
+    alignSelf: 'center',
+    marginBottom: -10,
+  }
 
 
 });

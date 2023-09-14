@@ -25,7 +25,7 @@ const VocablaryListPage = () => {
           </View>
           <View style={styles.backgroundView}>
             <GestureHandlerRootView>
-              <ScrollView ref={scrollRef} style={{ height: windowHeight / 1.5 }}>
+              <ScrollView ref={scrollRef} style={{ height: Platform.OS === 'android' ? windowHeight / 1.23 : windowHeight / 1.36, }}>
                 {vocabulary.map((item) => (
                   <CustomVocablary item={item} key={item.id}
                     simultaneousHandlers={scrollRef} />
