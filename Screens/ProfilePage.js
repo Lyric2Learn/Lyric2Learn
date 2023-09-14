@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform, } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
@@ -29,7 +29,7 @@ const ProfilePage = () => {
   const handleChangePassword = async () => {
     try {
       if (newPassword !== confirmNewPassword) {
-        setError('Şifreler uyuşmuyor');
+        setError('*Şifreler uyuşmuyor!');
         return;
       }
       // Şifre değiştirme işlemini çağırın
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
   },
   backgroundView: {
     alignSelf: 'center',
@@ -138,11 +138,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 3 },
     width: windowWidth / 2.1,
     height: windowHeight / 16,
-
   },
   androidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   insideStyle: {
     marginTop: 20,
@@ -152,10 +151,8 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 50,
     alignSelf: 'center',
-    marginBottom: -8.8
-  }
-
-
+    marginBottom: -8.8,
+  },
 });
 
 export default ProfilePage;

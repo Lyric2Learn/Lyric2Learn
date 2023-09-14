@@ -19,13 +19,13 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const header = 'Hi There!';
-  const title = 'Let\'s Get Started!';
+  const title = "Let's Get Started!";
   const continueName = 'Continue >';
   const createAccount = 'Log In';
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email('Geçerli bir e-posta girin').required('E-posta zorunlu'),
-    password: yup.string().min(6, 'Şifre en az 6 karakter olmalı').required('Şifre zorunlu'),
+    email: yup.string().email('*Geçerli bir e-posta girin!').required('*E-posta zorunlu!'),
+    password: yup.string().min(6, '*Şifre en az 6 karakter olmalı!').required('*Şifre zorunlu!'),
   });
 
   const formik = useFormik({
@@ -55,7 +55,7 @@ const SignUp = () => {
 
   return (
     <LinearGradient colors={['#9183de', '#a094e3']} style={styles.linear}>
-      <KeyboardAwareScrollView style={styles.androidSafeArea} >
+      <KeyboardAwareScrollView style={styles.androidSafeArea}>
         <SafeAreaView>
           <Image source={require('../Images/Sallysecond.png')} style={styles.image} />
           <CustomText header={header} title={title} />
@@ -137,6 +137,6 @@ const styles = StyleSheet.create({
   },
   androidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+  },
 });
