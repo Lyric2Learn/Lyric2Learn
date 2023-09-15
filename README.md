@@ -1,6 +1,6 @@
 #  ![İkon](https://i.hizliresim.com/s60u8gp.jpg) Lyric2Learn
 
-**MOBİLE APPLİCATİON DEVELOPMENT BOOTCAMP BİTİRME PROJESİDİR.**
+**BBB </CODE16> MOBİLE APPLİCATİON DEVELOPMENT BOOTCAMP BİTİRME PROJESİDİR.**
 
 * Lyric2Learn uygulaması, ingilizce kelimeleri şarkı sözleriyle daha hızlı ve eğlenceli şekilde öğretmeyi amaçlar. Bu uygulamayla birlikte yabancı şarkı arayabilir ve bu şarkının sözlerini görebiliriz. Bu sözlerdeki kelimelere tıklayarak türkçe anlamlarına bakabilir, istersek de o kelimeyi daha sonra bakmak için liste ekranımıza kaydedebiliriz. Bu uygulamayla ingilizce kelimeleri öğrenmek çok kolay!
 
