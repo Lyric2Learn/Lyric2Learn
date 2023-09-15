@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, SafeAreaView, StatusBar, Platform, } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
@@ -7,9 +7,12 @@ import { changePassword, signOutUser } from '../authentication/authService';
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
 
 const ProfilePage = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -55,41 +58,41 @@ const ProfilePage = () => {
             <Image source={require('../Images/Lyric2LearnLogo.png')} />
           </View>
           <View style={styles.backgroundView}>
-            <View style={styles.insideStyle}>
-              <View>
-                <Image style={styles.picProfile} source={require('../Images/Profile1.png')} />
-              </View>
-              <CustomTextInput
-                icon={<Password />}
-                placeholder='Mevcut Şifre'
-                onChangeText={(text) => setOldPassword(text)}
-                value={oldPassword}
-                secureText={true}
-                isLowerCase={false}
-                profileStyle={windowWidth / 1.25}
-                inputheight={windowHeight / 17}
-              />
-              <CustomTextInput
-                icon={<Password />}
-                placeholder='Yeni Şifre'
-                onChangeText={(text) => setNewPassword(text)}
-                value={newPassword}
-                secureText={true}
-                isLowerCase={false}
-                profileStyle={windowWidth / 1.25}
-                inputheight={windowHeight / 17}
-              />
-              <CustomTextInput
-                icon={<Password />}
-                placeholder='Yeni Şifre (Tekrar)'
-                onChangeText={(text) => setConfirmNewPassword(text)}
-                value={confirmNewPassword}
-                secureText={true}
-                isLowerCase={false}
-                profileStyle={windowWidth / 1.25}
-                inputheight={windowHeight / 17}
-              />
-              {error && <Text style={styles.error}>{error}</Text>}
+            <View style={styles.imageContainer}>
+              <Image style={styles.picProfile} source={require('../Images/Profile1.png')} />
+            </View>
+            <CustomTextInput
+              icon={<Password />}
+              placeholder='Mevcut Şifre'
+              onChangeText={(text) => setOldPassword(text)}
+              value={oldPassword}
+              secureText={true}
+              isLowerCase={false}
+              widthStyle={windowWidth - 80}
+              heightStyle={60}
+            />
+            <CustomTextInput
+              icon={<Password />}
+              placeholder='Yeni Şifre'
+              onChangeText={(text) => setNewPassword(text)}
+              value={newPassword}
+              secureText={true}
+              isLowerCase={false}
+              widthStyle={windowWidth - 80}
+              heightStyle={60}
+            />
+            <CustomTextInput
+              icon={<Password />}
+              placeholder='Yeni Şifre (Tekrar)'
+              onChangeText={(text) => setConfirmNewPassword(text)}
+              value={confirmNewPassword}
+              secureText={true}
+              isLowerCase={false}
+              widthStyle={windowWidth - 80}
+              heightStyle={60}
+            />
+            {error && <Text style={styles.error}>{error}</Text>}
+            <View style={styles.buttonContainer}>
               <CustomButton
                 buttonColor={'#E5B2CA'}
                 titleColor={'#FFF'}
@@ -111,15 +114,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    justifyContent: 'space-evenly'
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  androidSafeArea: {
+    flex: 1,
   },
   backgroundView: {
-    alignSelf: 'center',
+    flex: 1,
     backgroundColor: '#ffffff99',
-    height: windowHeight / 1.4,
-    width: windowWidth / 1.1,
-    margin: 8,
+    width: windowWidth - 32,
+    margin: 16,
     borderRadius: 10,
+    marginTop: -20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   error: {
     color: 'red',
@@ -127,8 +137,6 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignSelf: 'center',
-    marginTop: 10,
-    marginBottom: -30,
   },
   buttonShadow: {
     shadowColor: '##dcdcdc40',
@@ -136,24 +144,23 @@ const styles = StyleSheet.create({
     shadowRadius: 3.85,
     elevation: 2,
     shadowOffset: { width: 3, height: 3 },
-    width: windowWidth / 2.1,
-    height: windowHeight / 16,
-
-  },
-  androidSafeArea: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  },
-  insideStyle: {
-    marginTop: 20,
+    alignItems: 'center',
+    width: 200,
+    height: 50,
   },
   picProfile: {
-    height: 250,
-    width: 250,
-    borderRadius: 50,
     alignSelf: 'center',
-    marginBottom: -8.8
-  }
+    width: 250,
+    height: 250,
+
+  },
+  imageContainer: {
+    resizeMode: 'contain',
+  },
+  buttonContainer: {
+    alignItems: 'center',
+
+  },
 
 
 });

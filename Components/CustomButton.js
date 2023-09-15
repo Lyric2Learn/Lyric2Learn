@@ -16,14 +16,12 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    alignSelf: 'center',
     justifyContent: 'center',
     alignContent: 'center',
-    marginHorizontal: 40,
     marginVertical: 10,
     padding: 10,
-    height: windowHeight / 11,
-    width: windowWidth / 1.2,
+    height: 80,
+    width: windowWidth - 80,
     borderRadius: 50,
   },
   buttonTitle: {
