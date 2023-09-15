@@ -46,6 +46,12 @@ Aşağıda menünün ortasında bulunan liste butonuna tıklayarak liste ekranı
 ![List Screen](https://i.hizliresim.com/bwnfzzg.png)
 ![Word Delete Screen](https://i.hizliresim.com/jxaox8g.png)
 
+## PROFİL SAYFASI
+
+Çıkış yapma ve şifre işlemleri için Profil sayfasına girebiliriz. Şifremizi değiştirmek için eski şifremizi ve iki defa yeni şifremizi girmemiz istenir. Log Out butonuyla uygulamadan çıkış yapabiliriz. 
+
+![Profile Screen](https://i.hizliresim.com/s9a9t66.png)
+
 ## PROJE EKİBİ
 - [Melek Mahmutoğlu](https://www.linkedin.com/in/melek-mahmuto%C4%9Flu-3050161b0/)
 - [Mehmet Öcal](https://www.linkedin.com/in/mehmetocall/)
