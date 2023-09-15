@@ -32,6 +32,8 @@ Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şark�
 
 ## AYRINTILAR
 
+Arama sayfasında istediğimiz şarkıya tıklayarak şarkının sözlerine ulaşabilir, sözlerdeki koyu renkli kelimelere tıkladığımızda da türkçe karşılıklarını görebiliriz. Kaydetmek istediğimiz kelimeleri kaydet butonuna tıklayarak listemize eklemiş oluruz. Biz silene kadar listemizde kalmaya devam ederler.
+
 ![Music Screen](https://i.hizliresim.com/7lln84f.png)
 ![Word Screen](https://i.hizliresim.com/pn6regv.png)
 ![Word Adding Screen](https://i.hizliresim.com/p4wd4p8.png)
