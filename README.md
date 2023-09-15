@@ -30,8 +30,15 @@ Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şark�
 ![Home Screen](https://i.hizliresim.com/1v2qszo.png)
 ![Search Screen](https://i.hizliresim.com/nag32wd.png)
 
+## AYRINTILAR
+
+![Music Screen](https://i.hizliresim.com/7lln84f.png)
+![Word Screen](https://i.hizliresim.com/pn6regv.png)
+![Word Adding Screen](https://i.hizliresim.com/p4wd4p8.png)
+
+
 ## PROJE EKİBİ
--  [Melek Mahmutoğlu](https://www.linkedin.com/in/melek-mahmuto%C4%9Flu-3050161b0/)
+- [Melek Mahmutoğlu](https://www.linkedin.com/in/melek-mahmuto%C4%9Flu-3050161b0/)
 - [Mehmet Öcal](https://www.linkedin.com/in/mehmetocall/)
 - [Semanur Yabacı](https://www.linkedin.com/in/semanuryabaci/)
 
