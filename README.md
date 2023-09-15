@@ -10,6 +10,12 @@
  2.  Gerekli paketleri yüklemek için   -->   '***npm install***'
  3.  Bu proje [Expo](https://docs.expo.dev/) kullanılarak yapılmıştır. Çalıştırmak için   -->   '***npm run start***'
 
+## BAŞLANGIÇ
+
+Uygulama ilk çalıştırıldığında ilk splash ekranı sonrasında da başlangıç sayfası bizi karşılar. Splash ekranı uygulama için özel olarak hazırlanmış ikonu içerir.
+
+![Splash Screen](https://hizliresim.com/gowixcs)
+![Start Screen](https://hizliresim.com/bzbvbim)
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
 
