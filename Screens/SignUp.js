@@ -80,7 +80,7 @@ const SignUp = () => {
             {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
             <CustomTextInput
               icon={<Password />}
-              placeholder='Şifre'
+              placeholder='Password'
               onChangeText={formik.handleChange('password')}
               onBlur={formik.handleBlur('password')}
               value={formik.values.password}
