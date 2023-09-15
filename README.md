@@ -27,8 +27,8 @@ Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Cr
 ## ANASAYFA
 Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
 
-![Anasayfa](https://i.hizliresim.com/hx6n2zt.png)
-![Anasayfa](https://i.hizliresim.com/mtp8pfp.png)
+![Home Screen](https://i.hizliresim.com/1v2qszo.png)
+![Search Screen](https://i.hizliresim.com/nag32wd.png)
 
 ## PROJE EKİBİ
 -  [Melek Mahmutoğlu](https://www.linkedin.com/in/melek-mahmuto%C4%9Flu-3050161b0/)
