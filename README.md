@@ -12,27 +12,28 @@
 
 ## BAŞLANGIÇ
 
-Uygulama ilk çalıştırıldığında ilk splash ekranı sonrasında da başlangıç sayfası bizi karşılar. Splash ekranı uygulama için özel olarak hazırlanmış ikonu içerir.
+Uygulama çalıştırıldığında ilk splash ekranı sonrasında da başlangıç sayfası bizi karşılar. Splash ekranı uygulama için özel olarak hazırlanmış ikonu içerir.
 
 ![Splash Screen](https://i.hizliresim.com/gt1yirq.png)
 ![Start Screen](https://i.hizliresim.com/bzbvbim.png)
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
 
-Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Create an Account butonuna tıklayarak e-posta adresiniz ve en az 6 haneli şifrenizle kayıt olabilir, kaydı tamamladıktan sonra log in ekranından uygulamaya giriş yapabilirsiniz.
+Başlangıç sayfasındaki Let's Get Started butonuna tıkladığımızda log in ekranına gideriz. Eğer henüz kayıt olmadıysak Create an Account butonuna tıklayarak e-posta adresimiz ve en az 6 haneli şifremizle kayıt olabilir, kaydı tamamladıktan sonra log in ekranından uygulamaya giriş yapabiliriz.
 
 ![Log In Screen](https://i.hizliresim.com/occnby4.png)
 ![Sign Up Screen](https://i.hizliresim.com/awotso8.png)
 
 ## ANASAYFA
-Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
+
+Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde, içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
 
 ![Home Screen](https://i.hizliresim.com/1v2qszo.png)
 ![Search Screen](https://i.hizliresim.com/nag32wd.png)
 
 ## AYRINTILAR
 
-Arama sayfasında istediğimiz şarkıya tıklayarak şarkının sözlerine ulaşabilir, sözlerdeki koyu renkli kelimelere tıklayarak türkçe karşılıklarını görebiliriz. Kaydetmek istediğimiz kelimeleri kaydet butonuna bastığımızda listemize eklemiş, tekrar bastığımızda ise listeden çıkarmış oluruz. 
+Arama sayfasında karşımıza çıkan şarkılardan istediğimize tıklayarak şarkının detay sayfasına ulaşırız. Bu sayfada şarkı sözlerini görebilir, sözlerdeki koyu renkli kelimelere tıklayarak türkçe anlamlarına bakabiliriz. Kaydetmek istediğimiz kelimeleri kaydet butonuna bastığımızda listemize eklemiş, tekrar bastığımızda ise listeden çıkarmış oluruz. 
 
 ![Music Screen](https://i.hizliresim.com/7lln84f.png)
 ![Word Screen](https://i.hizliresim.com/pn6regv.png)
@@ -40,7 +41,7 @@ Arama sayfasında istediğimiz şarkıya tıklayarak şarkının sözlerine ula�
 
 ## KELİME LİSTEMİZ
 
-Aşağıda menünün ortasında bulunan liste butonuna tıklayarak liste ekranına gidebiliriz. Orada kaydettiğimiz kelimeler bulunur. Kelimeyi silmek için sağdan sola doğru kaydırmamız yeterli olur. Kelimeler biz silene kadar listemizde kalmaya devam eder.
+Aşağıda menünün ortasında bulunan liste butonuna tıklayarak liste ekranına gideriz. Orada kaydettiğimiz kelimeler bulunur. Kelimeyi silmek için sağdan sola doğru kaydırmamız yeterli olur. Kelimeler biz silene kadar listemizde kalmaya devam eder.
 
 ![List Screen](https://i.hizliresim.com/bwnfzzg.png)
 ![Word Delete Screen](https://i.hizliresim.com/jxaox8g.png)
