@@ -74,7 +74,7 @@ const LoginPage = () => {
                 secureText={false}
                 isLowerCase={true}
                 widthStyle={windowWidth - 40}
-                heightStyle={90}
+                heightStyle={75}
               />
               {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
               <CustomTextInput
@@ -86,7 +86,7 @@ const LoginPage = () => {
                 secureText={true}
                 isLowerCase={false}
                 widthStyle={windowWidth - 40}
-                heightStyle={90}
+                heightStyle={75}
               />
               {formik.touched.password && formik.errors.password ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.password}</Text> : null}
             </View>
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   buttonContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   androidSafeArea: {
     flex: 1,
