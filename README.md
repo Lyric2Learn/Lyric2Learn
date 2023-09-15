@@ -21,8 +21,8 @@ Uygulama ilk çalıştırıldığında ilk splash ekranı sonrasında da başlan
 
 Uygulamayı çalıştırdığınızda log in ekranı sizi karşılayacaktır. Create an Account butonuna tıklayarak e-posta adresiniz ve en az 6 haneli şifrenizle kayıt olabilir, kaydı tamamladıktan sonra log in ekranından uygulamaya giriş yapabilirsiniz.
 
-![Kayıt Ol Ekranı](https://i.hizliresim.com/37g6uw2.png)
-![Giriş Yap Ekranı](https://i.hizliresim.com/a2mteqo.png)
+![Log In Screen](https://i.hizliresim.com/occnby4.png)
+![Sign Up Screen](https://i.hizliresim.com/awotso8.png)
 
 ## ANASAYFA
 Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şarkı araması yapmamız için tasarlanmıştır. Arama butonuna tıklayıp herhangi bir harf ya da kelime girdiğimizde içinde o harf veya kelime geçen tüm şarkıları bize listeler. Bu sayede aradığımız şarkıyı bulabilir ve üzerine tıklayarak şarkının sözlerine ulaşabiliriz.
