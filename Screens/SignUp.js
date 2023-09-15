@@ -19,7 +19,7 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const header = 'Hi There!';
-  const title = "Let's Get Started!";
+  const title = "Let' s Get Started!";
   const continueName = 'Continue >';
   const createAccount = 'Log In';
 
