@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('window');
 
 const WelcomePage = () => {
-  const letsGetStarted = "Let' s Get Started...";
+  const letsGetStarted = "Let's Get Started...";
   const navigation = useNavigation();
 
   useEffect(() => {
