@@ -2,13 +2,13 @@
 
 **BBB </CODE16> MOBİLE APPLİCATİON DEVELOPMENT BOOTCAMP BİTİRME PROJESİDİR.**
 
-* Lyric2Learn uygulaması, ingilizce kelimeleri şarkı sözleriyle daha hızlı ve eğlenceli şekilde öğretmeyi amaçlar. Bu uygulamayla birlikte yabancı şarkı arayabilir ve bu şarkının sözlerini görebiliriz. Bu sözlerdeki kelimelere tıklayarak türkçe anlamlarına bakabilir, istersek de o kelimeyi daha sonra bakmak için liste ekranımıza kaydedebiliriz. Bu uygulamayla ingilizce kelimeleri öğrenmek çok kolay!
+* Lyric2Learn uygulaması, ingilizce kelimeleri şarkı sözleriyle daha hızlı ve eğlenceli şekilde öğretmeyi amaçlar. Bu uygulamayla birlikte yabancı şarkı arayabilir ve bu şarkının sözlerini görebiliriz. Bu sözlerdeki kelimelere tıklayarak türkçe anlamlarına bakabilir, istersek de o kelimeyi daha sonra bakmak için liste ekranımıza kaydedebiliriz. Bu uygulamayla kelime haznemizi geliştirmek çok kolay!
 
 ## PROJEYİ ÇALIŞTIRMAK İÇİN TALİMATLAR
 
  1. Projeyi klonlamak için   -->   '***git clone https://github.com/Lyric2Learn/Lyric2Learn.git***'
- 2.  Gerekli paketleri yüklemek için   -->   '***npm install***'
- 3.  Bu proje [Expo](https://docs.expo.dev/) kullanılarak yapılmıştır. Çalıştırmak için   -->   '***npm run start***'
+ 2. Gerekli paketleri yüklemek için   -->   '***npm install***'
+ 3. Bu proje [Expo](https://docs.expo.dev/) kullanılarak yapılmıştır. Çalıştırmak için   -->   '***npm run start***'
 
 ## BAŞLANGIÇ
 
@@ -31,7 +31,7 @@ Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şark�
 ![Home Screen](https://i.hizliresim.com/1v2qszo.png)
 ![Search Screen](https://i.hizliresim.com/nag32wd.png)
 
-## AYRINTILAR
+## DETAYLAR
 
 Arama sayfasında karşımıza çıkan şarkılardan istediğimize tıklayarak şarkının detay sayfasına ulaşırız. Bu sayfada şarkı sözlerini görebilir, sözlerdeki koyu renkli kelimelere tıklayarak türkçe anlamlarına bakabiliriz. Kaydetmek istediğimiz kelimeleri kaydet butonuna bastığımızda listemize eklemiş, tekrar bastığımızda ise listeden çıkarmış oluruz. 
 
@@ -48,7 +48,7 @@ Aşağıda menünün ortasında bulunan liste butonuna tıklayarak liste ekranı
 
 ## PROFİL SAYFASI
 
-Çıkış yapma ve şifre işlemleri için Profil sayfasına girebiliriz. Şifremizi değiştirmek için eski şifremizi ve iki defa yeni şifremizi girmemiz istenir. Log Out butonuyla uygulamadan çıkış yapabiliriz. 
+Çıkış yapma ve şifre işlemlerini Profil sayfasından gerçekleştiririz. Şifremizi değiştirmek için eski şifremizi ve iki defa yeni şifremizi girip Change Password butonuna tıklamalıyız. Log Out butonuyla da uygulamadan çıkış yapabiliriz. 
 
 ![Profile Screen](https://i.hizliresim.com/s9a9t66.png)
 
