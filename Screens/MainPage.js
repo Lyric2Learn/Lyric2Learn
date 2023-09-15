@@ -5,7 +5,6 @@ import Search from '../Images/Svg/search';
 import CustomSearchInput from '../Components/CustomSearchInput';
 import CustomSearchSong from '../Components/CustomSearchSong';
 import { useNavigation } from '@react-navigation/native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../authentication/firebaseConfig';
 import { SafeAreaView } from 'react-native-safe-area-context';

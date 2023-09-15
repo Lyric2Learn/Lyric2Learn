@@ -1,5 +1,5 @@
 import { StyleSheet, View, Image, Dimensions, } from 'react-native';
-import React, { useRef, useState, } from 'react';
+import React, { useRef, } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import useVocabularyStore from '../Store/useStore';
 import CustomVocablary from '../Components/CustomVocablary';
@@ -8,7 +8,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const VocablaryListPage = () => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);

@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import { StyleSheet, Text, Dimensions } from 'react-native'
 import React from 'react'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
 import Delete from '../Images/Svg/delete'
 import useVocabularyStore from '../Store/useStore'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 const heightContainer = 70;
 const windowWidth = Dimensions.get('window').width;
