@@ -42,15 +42,15 @@ const BottomTabNavigator = () => {
           name='Anasayfa'
           component={MainPage}
           options={{
-            tabBarLabel: ({ focused }) => <Text style={{ color: focused ? '#E5B2CA' : 'grey', fontSize: focused ? 14 : 10 }}>Home</Text>,
-            tabBarIcon: ({ color, size }) => <Search width={size} height={size} fill={color} />,
+            tabBarLabel: ({ focused }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Home</Text>),
+            tabBarIcon: ({ color, size, }) => <Search width={size} height={size} fill={color} />,
           }}
         />
         <Tab.Screen
           name='Liste'
           component={VocablaryListPage}
           options={{
-            tabBarLabel: ({ focused }) => <Text style={{ color: focused ? '#E5B2CA' : 'grey', fontSize: focused ? 14 : 10 }}>List</Text>,
+            tabBarLabel: ({ focused }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Word List</Text>),
             tabBarIcon: ({ color, size }) => <List width={size} height={size} fill={color} />,
           }}
         />
@@ -58,7 +58,7 @@ const BottomTabNavigator = () => {
           name='Profil'
           component={ProfilePage}
           options={{
-            tabBarLabel: ({ focused }) => <Text style={{ color: focused ? '#E5B2CA' : 'grey', fontSize: focused ? 14 : 10 }}>Profile</Text>,
+            tabBarLabel: ({ focused }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Profile</Text>),
             tabBarIcon: ({ color, size }) => <User width={size} height={size} fill={color} />,
           }}
         />

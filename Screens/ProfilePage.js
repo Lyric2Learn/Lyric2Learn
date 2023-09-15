@@ -60,7 +60,7 @@ const ProfilePage = () => {
             </View>
             <CustomTextInput
               icon={<Password />}
-              placeholder='Current Password'
+              placeholder='Current password '
               onChangeText={(text) => setOldPassword(text)}
               value={oldPassword}
               secureText={true}
