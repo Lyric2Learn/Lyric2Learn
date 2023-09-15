@@ -10,9 +10,8 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../authentication/firebaseConfig';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const { width, height } = Dimensions.get('window');
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const { width } = Dimensions.get('window');
+
 
 const MainPage = () => {
   const navigation = useNavigation();
@@ -61,7 +60,7 @@ const MainPage = () => {
           </View>
           {/* Search Alanı */}
           <View style={styles.inputContainer}>
-            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} />
+            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} scrollView={false} />
           </View>
           {/* Şarkı araması yapılmadan önce gözükecek resim */}
           {isVisible ? (
@@ -116,6 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 100,
     alignItems: 'center',
+    justifyContent: 'center'
   },
   flatlist: {
     backgroundColor: '#ffffff99',
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     resizeMode: 'contain',
-    width: width - 16,
+    width: width - 50,
   },
   songCard: {
     padding: 10,
