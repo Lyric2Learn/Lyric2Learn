@@ -10,7 +10,6 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const ProfilePage = () => {
   const [newPassword, setNewPassword] = useState('');

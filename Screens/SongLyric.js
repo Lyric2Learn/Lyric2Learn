@@ -8,7 +8,6 @@ import useVocabularyStore from '../Store/useStore';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const SongLyric = ({ route }) => {
   const navigation = useNavigation();

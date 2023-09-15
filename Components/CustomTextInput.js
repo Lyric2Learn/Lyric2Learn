@@ -2,7 +2,6 @@ import { StyleSheet, TextInput, View, Dimensions } from 'react-native';
 import React, { useState } from 'react';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const CustomTextInput = ({ icon, placeholder, onChangeText, value, secureText, isLowerCase, widthStyle, heightStyle }) => {
   const [text, setText] = useState(value);
