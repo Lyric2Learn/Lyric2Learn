@@ -12,7 +12,7 @@ import Search from '../Images/Svg/search';
 import List from '../Images/Svg/list';
 import User from '../Images/Svg/user';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import SongLyric from '../Screens/SongLyric';
 
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';
@@ -42,15 +42,15 @@ const BottomTabNavigator = () => {
           name='Anasayfa'
           component={MainPage}
           options={{
-            tabBarLabel: ({ focused, color, size }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Anasayfa</Text>),
-            tabBarIcon: ({ color, size, }) => <Search width={size} height={size} fill={color} />,
+            tabBarLabel: ({ focused }) => <Text style={{ color: focused ? '#E5B2CA' : 'grey', fontSize: focused ? 14 : 10 }}>Home</Text>,
+            tabBarIcon: ({ color, size }) => <Search width={size} height={size} fill={color} />,
           }}
         />
         <Tab.Screen
           name='Liste'
           component={VocablaryListPage}
           options={{
-            tabBarLabel: ({ focused, color, size }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Liste</Text>),
+            tabBarLabel: ({ focused }) => <Text style={{ color: focused ? '#E5B2CA' : 'grey', fontSize: focused ? 14 : 10 }}>List</Text>,
             tabBarIcon: ({ color, size }) => <List width={size} height={size} fill={color} />,
           }}
         />
@@ -58,7 +58,7 @@ const BottomTabNavigator = () => {
           name='Profil'
           component={ProfilePage}
           options={{
-            tabBarLabel: ({ focused, color, size }) => (<Text style={{ color: focused ? "#E5B2CA" : "grey", fontSize: focused ? 14 : 10 }}>Profil</Text>),
+            tabBarLabel: ({ focused }) => <Text style={{ color: focused ? '#E5B2CA' : 'grey', fontSize: focused ? 14 : 10 }}>Profile</Text>,
             tabBarIcon: ({ color, size }) => <User width={size} height={size} fill={color} />,
           }}
         />

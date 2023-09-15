@@ -1,20 +1,17 @@
-import { StyleSheet, View, Image, Dimensions, } from 'react-native';
-import React, { useRef, useState, } from 'react';
+import { StyleSheet, View, Image, Dimensions } from 'react-native';
+import React, { useRef } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import useVocabularyStore from '../Store/useStore';
 import CustomVocablary from '../Components/CustomVocablary';
 import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const VocablaryListPage = () => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);
   console.log(vocabulary);
   const scrollRef = useRef(null);
-
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
@@ -27,8 +24,7 @@ const VocablaryListPage = () => {
             <GestureHandlerRootView>
               <ScrollView ref={scrollRef}>
                 {vocabulary.map((item) => (
-                  <CustomVocablary item={item} key={item.id}
-                    simultaneousHandlers={scrollRef} />
+                  <CustomVocablary item={item} key={item.id} simultaneousHandlers={scrollRef} />
                 ))}
               </ScrollView>
             </GestureHandlerRootView>

@@ -5,13 +5,11 @@ import Search from '../Images/Svg/search';
 import CustomSearchInput from '../Components/CustomSearchInput';
 import CustomSearchSong from '../Components/CustomSearchSong';
 import { useNavigation } from '@react-navigation/native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../authentication/firebaseConfig';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
-
 
 const MainPage = () => {
   const navigation = useNavigation();
@@ -60,7 +58,7 @@ const MainPage = () => {
           </View>
           {/* Search Alanı */}
           <View style={styles.inputContainer}>
-            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} scrollView={false} />
+            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Search Song...'} scrollView={false} />
           </View>
           {/* Şarkı araması yapılmadan önce gözükecek resim */}
           {isVisible ? (
@@ -115,7 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 100,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   flatlist: {
     backgroundColor: '#ffffff99',

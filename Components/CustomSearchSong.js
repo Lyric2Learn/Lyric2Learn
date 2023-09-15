@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import React from 'react';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const CustomSearchSong = ({ song }) => {
   return (

@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions, View, TextInput } from 'react-native';
 import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 

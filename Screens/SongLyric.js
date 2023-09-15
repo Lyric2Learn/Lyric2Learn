@@ -8,19 +8,18 @@ import useVocabularyStore from '../Store/useStore';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const SongLyric = ({ route }) => {
   const navigation = useNavigation();
   const { song } = route.params;
-  const [selectedWordInfo, setSelectedWordInfo] = useState({ en: "", tr: "", id: -1 });
+  const [selectedWordInfo, setSelectedWordInfo] = useState({ en: '', tr: '', id: -1 });
   const [visible, setVisible] = useState(false);
   const [wordList, setWordList] = useState([]);
 
   const addVocabulary = useVocabularyStore((state) => state.addVocabulary);
 
   const handleWordClick = (wordInfo) => {
-    const _translation = song.translations.find(item => item.en === wordInfo);
+    const _translation = song.translations.find((item) => item.en === wordInfo);
     if (_translation) {
       setSelectedWordInfo(_translation);
       setVisible(true);
@@ -29,14 +28,13 @@ const SongLyric = ({ route }) => {
 
   const closeModal = () => {
     setVisible(false);
-    setSelectedWordInfo({ en: "", tr: "", id: -1 });
+    setSelectedWordInfo({ en: '', tr: '', id: -1 });
   };
-
 
   const groupWord = (value) => {
     const list = [];
     let words = [];
-    value.split(' ').forEach(word => {
+    value.split(' ').forEach((word) => {
       const regex = /^[A-Z]/;
 
       if (regex.test(word)) {
@@ -49,16 +47,17 @@ const SongLyric = ({ route }) => {
       } else {
         words.push(word);
       }
-
-    })
+    });
     setWordList(list);
-  }
+  };
 
   const control = (word) => {
-    return song.translations.some(item => item.en === word);
-  }
+    return song.translations.some((item) => item.en === word);
+  };
 
-  useEffect(() => { groupWord(song.lyrics) }, [song.lyrics])
+  useEffect(() => {
+    groupWord(song.lyrics);
+  }, [song.lyrics]);
 
   return (
     <LinearGradient colors={['#e5b2cacc', '#cf86dc4d']} style={styles.linear}>
@@ -84,26 +83,20 @@ const SongLyric = ({ route }) => {
             </View>
             <ScrollView>
               <View>
-                {wordList.map((item, index) =>
+                {wordList.map((item, index) => (
                   <View key={index} style={styles.wordContainer}>
-                    {item.map((wordMap, indexKey) =>
-                      <Text key={indexKey}
-                        style={control(wordMap) ? styles.clickableWord : styles.lyrics}
-                        onPress={() => handleWordClick(wordMap)}
-                      >{wordMap} </Text>
-                    )}
+                    {item.map((wordMap, indexKey) => (
+                      <Text key={indexKey} style={control(wordMap) ? styles.clickableWord : styles.lyrics} onPress={() => handleWordClick(wordMap)}>
+                        {wordMap}{' '}
+                      </Text>
+                    ))}
                   </View>
-                )}
+                ))}
               </View>
             </ScrollView>
           </View>
         </View>
-        <CustomModal
-          visible={visible}
-          onClose={closeModal}
-          word={selectedWordInfo}
-          save={() => addVocabulary(selectedWordInfo)}
-        />
+        <CustomModal visible={visible} onClose={closeModal} word={selectedWordInfo} save={() => addVocabulary(selectedWordInfo)} />
       </SafeAreaView>
     </LinearGradient>
   );
@@ -117,7 +110,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-
   },
   header: {
     flexDirection: 'row',
@@ -176,7 +168,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     letterSpacing: 0.3,
     padding: 3,
-
   },
   clickableWord: {
     color: '#e79ec0',
@@ -184,7 +175,6 @@ const styles = StyleSheet.create({
     padding: 3,
     fontSize: 18,
     letterSpacing: 0.5,
-
   },
   wordContainer: {
     flexDirection: 'row',
