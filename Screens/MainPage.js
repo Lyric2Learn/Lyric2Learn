@@ -11,7 +11,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
 
-
 const MainPage = () => {
   const navigation = useNavigation();
   const [searchText, setSearchText] = useState('');
@@ -59,7 +58,7 @@ const MainPage = () => {
           </View>
           {/* Search Alanı */}
           <View style={styles.inputContainer}>
-            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Şarkınızı Arayın...'} scrollView={false} />
+            <CustomSearchInput icon={<Search />} value={searchText} onChangeText={handleSearch} placeholder={'Search Song...'} scrollView={false} />
           </View>
           {/* Şarkı araması yapılmadan önce gözükecek resim */}
           {isVisible ? (
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 100,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   flatlist: {
     backgroundColor: '#ffffff99',

@@ -67,7 +67,7 @@ const LoginPage = () => {
               {/* Input Ekranı */}
               <CustomTextInput
                 icon={<Username />}
-                placeholder='E-posta'
+                placeholder='E-mail'
                 onChangeText={formik.handleChange('email')}
                 onBlur={formik.handleBlur('email')}
                 value={formik.values.email}
@@ -79,7 +79,7 @@ const LoginPage = () => {
               {formik.touched.email && formik.errors.email ? <Text style={{ marginLeft: 50, marginBottom: 5 }}>*{formik.errors.email}</Text> : null}
               <CustomTextInput
                 icon={<Password />}
-                placeholder='Şifre'
+                placeholder='Password'
                 onChangeText={formik.handleChange('password')}
                 onBlur={formik.handleBlur('password')}
                 value={formik.values.password}
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   buttonContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   androidSafeArea: {
     flex: 1,

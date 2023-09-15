@@ -60,7 +60,7 @@ const ProfilePage = () => {
             </View>
             <CustomTextInput
               icon={<Password />}
-              placeholder='Mevcut Şifre'
+              placeholder='Current Password'
               onChangeText={(text) => setOldPassword(text)}
               value={oldPassword}
               secureText={true}
@@ -70,7 +70,7 @@ const ProfilePage = () => {
             />
             <CustomTextInput
               icon={<Password />}
-              placeholder='Yeni Şifre'
+              placeholder='New Password'
               onChangeText={(text) => setNewPassword(text)}
               value={newPassword}
               secureText={true}
@@ -80,7 +80,7 @@ const ProfilePage = () => {
             />
             <CustomTextInput
               icon={<Password />}
-              placeholder='Yeni Şifre (Tekrar)'
+              placeholder='New Password (Again)'
               onChangeText={(text) => setConfirmNewPassword(text)}
               value={confirmNewPassword}
               secureText={true}
@@ -93,11 +93,11 @@ const ProfilePage = () => {
               <CustomButton
                 buttonColor={'#E5B2CA'}
                 titleColor={'#FFF'}
-                buttonName={'Şifre Değiştir'}
+                buttonName={'Change Password'}
                 onPress={handleChangePassword}
                 buttonShadow={styles.buttonShadow}
               />
-              <CustomButton buttonColor={'#E5B2CA'} titleColor={'#FFF'} buttonName={'Çıkış Yap'} onPress={handleLogout} buttonShadow={styles.buttonShadow} />
+              <CustomButton buttonColor={'#E5B2CA'} titleColor={'#FFF'} buttonName={'Log Out'} onPress={handleLogout} buttonShadow={styles.buttonShadow} />
             </View>
           </View>
         </View>
