@@ -14,8 +14,8 @@
 
 Uygulama ilk çalıştırıldığında ilk splash ekranı sonrasında da başlangıç sayfası bizi karşılar. Splash ekranı uygulama için özel olarak hazırlanmış ikonu içerir.
 
-![Splash Screen](https://hizliresim.com/gowixcs)
-![Start Screen](https://hizliresim.com/bzbvbim)
+![Splash Screen](https://i.hizliresim.com/gt1yirq.png)
+![Start Screen](https://i.hizliresim.com/bzbvbim.png)
 
 ## KAYIT OL VE GİRİŞ YAP EKRANI
 
