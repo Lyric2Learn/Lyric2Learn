@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
 import Password from '../Images/Svg/password';
 import CustomTextInput from '../Components/CustomTextInput';
 import CustomButton from '../Components/CustomButton';
@@ -9,10 +9,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
 
 const ProfilePage = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -32,7 +30,7 @@ const ProfilePage = () => {
   const handleChangePassword = async () => {
     try {
       if (newPassword !== confirmNewPassword) {
-        setError('Şifreler uyuşmuyor');
+        setError('*Şifreler uyuşmuyor!');
         return;
       }
       // Şifre değiştirme işlemini çağırın
@@ -152,17 +150,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 250,
     height: 250,
-
   },
   imageContainer: {
     resizeMode: 'contain',
   },
   buttonContainer: {
     alignItems: 'center',
-
   },
-
-
 });
 
 export default ProfilePage;

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, Dimensions, } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, Alert, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import CustomText from '../Components/CustomText';
@@ -21,14 +21,14 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const header = 'Hi There!';
-  const title = 'Let\'s Get Started!';
+  const title = "Let' s Get Started!";
   const continueName = 'Continue >';
   const createAccount = 'Log In';
 
   //Validation Error
   const validationSchema = yup.object().shape({
-    email: yup.string().email('Geçerli bir e-posta girin').required('E-posta zorunlu'),
-    password: yup.string().min(6, 'Şifre en az 6 karakter olmalı').required('Şifre zorunlu'),
+    email: yup.string().email('*Geçerli bir e-posta girin!').required('*E-posta zorunlu!'),
+    password: yup.string().min(6, '*Şifre en az 6 karakter olmalı!').required('*Şifre zorunlu!'),
   });
 
   //Validation Control
@@ -59,7 +59,7 @@ const SignUp = () => {
 
   return (
     <LinearGradient colors={['#9183de', '#a094e3']} style={styles.linear}>
-      <KeyboardAwareScrollView >
+      <KeyboardAwareScrollView>
         <SafeAreaView style={styles.androidSafeArea}>
           {/* SallySecond Image */}
           <Image source={require('../Images/Sallysecond.png')} style={styles.image} />
@@ -146,10 +146,9 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   androidSafeArea: {
     flex: 1,
   },
-
 });
