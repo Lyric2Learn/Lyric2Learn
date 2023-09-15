@@ -32,12 +32,18 @@ Giriş yaptığımızda karşımıza ilk Anasayfa çıkacaktır. Bu sayfa şark�
 
 ## AYRINTILAR
 
-Arama sayfasında istediğimiz şarkıya tıklayarak şarkının sözlerine ulaşabilir, sözlerdeki koyu renkli kelimelere tıkladığımızda da türkçe karşılıklarını görebiliriz. Kaydetmek istediğimiz kelimeleri kaydet butonuna tıklayarak listemize eklemiş oluruz. Biz silene kadar listemizde kalmaya devam ederler.
+Arama sayfasında istediğimiz şarkıya tıklayarak şarkının sözlerine ulaşabilir, sözlerdeki koyu renkli kelimelere tıklayarak türkçe karşılıklarını görebiliriz. Kaydetmek istediğimiz kelimeleri kaydet butonuna bastığımızda listemize eklemiş, tekrar bastığımızda ise listeden çıkarmış oluruz. 
 
 ![Music Screen](https://i.hizliresim.com/7lln84f.png)
 ![Word Screen](https://i.hizliresim.com/pn6regv.png)
 ![Word Adding Screen](https://i.hizliresim.com/p4wd4p8.png)
 
+## KELİME LİSTEMİZ
+
+Aşağıda menünün ortasında bulunan liste butonuna tıklayarak liste ekranına gidebiliriz. Orada kaydettiğimiz kelimeler bulunur. Kelimeyi silmek için sağdan sola doğru kaydırmamız yeterli olur. Kelimeler biz silene kadar listemizde kalmaya devam eder.
+
+![List Screen](https://i.hizliresim.com/bwnfzzg.png)
+![Word Delete Screen](https://i.hizliresim.com/jxaox8g.png)
 
 ## PROJE EKİBİ
 - [Melek Mahmutoğlu](https://www.linkedin.com/in/melek-mahmuto%C4%9Flu-3050161b0/)
