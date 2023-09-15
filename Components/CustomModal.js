@@ -4,14 +4,13 @@ import Unsave from '../Images/Svg/unsave';
 import Save from '../Images/Svg/save';
 import useVocabularyStore from '../Store/useStore';
 
-const CustomHalfModal = ({ visible, onClose, word, save, }) => {
+const CustomHalfModal = ({ visible, onClose, word, save }) => {
   const vocabulary = useVocabularyStore((state) => state.vocabulary);
 
   console.log({ word, vocabulary });
   const toggleSave = () => {
-    save()
+    save();
   };
-
 
   return (
     <Modal
@@ -29,7 +28,7 @@ const CustomHalfModal = ({ visible, onClose, word, save, }) => {
               <Text style={styles.selectedWord}>{word.en}</Text>
               <Text style={styles.translationText}>{word.tr}</Text>
             </View>
-            <TouchableOpacity onPress={toggleSave}>{vocabulary.some(item => item.id === word.id) ? <Save /> : <Unsave />}</TouchableOpacity>
+            <TouchableOpacity onPress={toggleSave}>{vocabulary.some((item) => item.id === word.id) ? <Save /> : <Unsave />}</TouchableOpacity>
           </View>
           <TouchableOpacity onPress={() => onClose()} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>

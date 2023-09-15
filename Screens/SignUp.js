@@ -68,7 +68,7 @@ const SignUp = () => {
           <View style={styles.container}>
             <CustomTextInput
               icon={<Username />}
-              placeholder='E-posta'
+              placeholder='E-mail'
               onChangeText={formik.handleChange('email')}
               onBlur={formik.handleBlur('email')}
               value={formik.values.email}

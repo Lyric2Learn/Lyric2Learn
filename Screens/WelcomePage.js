@@ -5,11 +5,10 @@ import CustomButton from '../Components/CustomButton';
 import { getCurrentUser } from '../authentication/authService';
 import { useNavigation } from '@react-navigation/native';
 
-
 const { width } = Dimensions.get('window');
 
 const WelcomePage = () => {
-  const letsGetStarted = "Let's Get Started";
+  const letsGetStarted = "Let's Get Started...";
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -76,12 +75,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
     marginTop: -90,
-    width: width - 20
-
+    width: width - 20,
   },
   drop: {
     width: width - 100,
-    marginTop: - 40,
+    marginTop: -40,
     alignSelf: 'center',
   },
   buttonShadow: {
@@ -91,6 +89,6 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   buttonContainer: {
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });

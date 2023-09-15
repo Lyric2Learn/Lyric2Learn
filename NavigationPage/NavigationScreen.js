@@ -12,7 +12,7 @@ import Search from '../Images/Svg/search';
 import List from '../Images/Svg/list';
 import User from '../Images/Svg/user';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import SongLyric from '../Screens/SongLyric';
 
 import { FIREBASE_AUTH } from '../authentication/firebaseConfig';

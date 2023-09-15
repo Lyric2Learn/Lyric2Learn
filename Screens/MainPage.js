@@ -11,7 +11,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
 
-
 const MainPage = () => {
   const navigation = useNavigation();
   const [searchText, setSearchText] = useState('');
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 100,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   flatlist: {
     backgroundColor: '#ffffff99',
